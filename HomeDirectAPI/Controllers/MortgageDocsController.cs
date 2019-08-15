@@ -8,6 +8,7 @@ using HomeDirectAPI.Models;
 using HomeDirectAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 
 namespace HomeDirectAPI.Controllers
@@ -27,6 +28,25 @@ namespace HomeDirectAPI.Controllers
         public ListMortgageDocResponse Get()
         {
             return repo.List();
+        }
+
+        [HttpGet("Docs/Count")]
+        public int GetCount(int LoanID)
+        {
+
+            return repo.ListByMortgageLoanID(LoanID).MortgageDocs.Count;
+        }
+
+        [HttpGet("Mortgage/{MortgageLoanID}")]
+        public ListMortgageDocResponse ListByMortgageLoanID(int MortgageLoanID)
+        {
+            return repo.ListByMortgageLoanID(MortgageLoanID);
+        }
+
+        [HttpGet("User/{UserID}")]
+        public ListMortgageDocResponse ListByUserID(int UserID)
+        {
+            return repo.ListByUserID(UserID);
         }
 
         // GET api/values/5
@@ -70,6 +90,47 @@ namespace HomeDirectAPI.Controllers
             //return Ok(new { count = files.Count, size, filePath });
 
             return repo.Add(valuedocs);
+        }
+
+        [HttpGet("Name")]
+        public string GetFileName(int LoanDocsID)
+        {
+            string fileName = string.Empty;
+            MortgageDocResponse docs = repo.GetDocsPath(LoanDocsID);
+            fileName = docs.MorgageLoanDoc.DocsName;
+            return fileName;
+        }
+        private string GetContentType(string path)
+        {
+            var provider = new FileExtensionContentTypeProvider();
+            string contentType;
+            if (!provider.TryGetContentType(path, out contentType))
+            {
+                contentType = "application/octet-stream";
+            }
+            return contentType;
+        }
+
+        [HttpPost("Download/LoanDocs")]
+        public IActionResult DownloadFile(int LoanDocsID)
+        {
+            //MortgageDocResponse docsresp = new MortgageDocResponse();
+            var currentDirectory = System.IO.Directory.GetCurrentDirectory();
+            MortgageDocResponse docsPath = repo.GetDocsPath(LoanDocsID);
+
+            //currentDirectory = currentDirectory + "\\src\\assets"Path.Combine(Path.Combine(currentDirectory, "attachments"), fileName);;
+            var filelink = docsPath.MorgageLoanDoc.DocsLink;
+
+            var file = Path.Combine(currentDirectory, filelink);
+
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(file, FileMode.Open))
+            {
+                stream.CopyTo(memory);
+            }
+            memory.Position = 0;
+
+            return File(memory, GetContentType(file));
         }
 
         // PUT api/values/5

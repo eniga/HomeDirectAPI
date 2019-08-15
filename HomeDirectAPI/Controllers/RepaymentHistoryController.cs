@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HomeDirectAPI.Models;
+using HomeDirectAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,36 +14,53 @@ namespace HomeDirectAPI.Controllers
     [Route("api/[controller]")]
     public class RepaymentHistoryController : Controller
     {
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
+        RepaymentHistoryRepository repo;
+
+        public RepaymentHistoryController(IConfiguration configuration)
         {
-            return new string[] { "value1", "value2" };
+            repo = new RepaymentHistoryRepository(configuration);
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{LoanId}")]
+        public ListRepaymentHistoryResponse List(int LoanId)
         {
-            return "value";
+            return repo.List(LoanId);
         }
 
-        // POST api/values
+        [HttpGet("{RepaymentID}")]
+        public RepaymentHistoryResponse Get(int RepaymentID)
+        {
+            return repo.Read(RepaymentID);
+        }
+
+        [HttpGet("Total")]
+        public TotalRepaymentsResponse TotalRepayment()
+        {
+            return repo.TotalRepayment();
+        }
+
+        [HttpGet("Recent")]
+        public ListRepaymentHistoryResponse RecentRepayments()
+        {
+            return repo.RecentRepayments();
+        }
+
         [HttpPost]
-        public void Post([FromBody]string value)
+        public Response Post([FromBody] RepaymentHistory request)
         {
+            return repo.Add(request);
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public Response Put([FromBody] RepaymentHistory request)
         {
+            return repo.Update(request);
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{RepaymentID}")]
+        public Response Delete(int RepaymentID)
         {
+            return repo.Delete(RepaymentID);
         }
     }
 }

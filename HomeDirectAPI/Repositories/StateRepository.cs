@@ -1,10 +1,81 @@
 ﻿using System;
+using System.Data;
+using System.Linq;
+using Dapper;
+using HomeDirectAPI.Models;
+using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
+
 namespace HomeDirectAPI.Repositories
 {
     public class StateRepository
     {
-        public StateRepository()
+        private string ConnectionString;
+
+        public StateRepository(IConfiguration configuration)
         {
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
+        }
+
+        private MySqlConnection GetConnection()
+        {
+            SimpleCRUD.SetDialect(SimpleCRUD.Dialect.MySQL);
+            return new MySqlConnection(ConnectionString);
+        }
+
+        public ListStateResponse List()
+        {
+            ListStateResponse response = new ListStateResponse();
+            try
+            {
+                using (IDbConnection conn = GetConnection())
+                {
+                    response.states = conn.GetList<StateResp>().ToList();
+                    if (response.states != null)
+                    {
+                        response.Status = true;
+                        response.Description = "Successful";
+                    }
+                    else
+                    {
+                        response.Status = false;
+                        response.Description = "No data";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Description = ex.Message;
+            }
+            return response;
+        }
+        public LGAResponse LgaByStateID(int stateID)
+        {
+            LGAResponse response = new LGAResponse();
+            try
+            {
+                using (IDbConnection conn = GetConnection())
+                {
+                    response.lgas = conn.Query<Local>("SELECT * FROM hdldb.LGA where StateID=?stateID ", new { stateID }).ToList();
+                    if (response.lgas != null)
+                    {
+                        response.Status = true;
+                        response.Description = "Successful";
+                    }
+                    else
+                    {
+                        response.Status = false;
+                        response.Description = "No data";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Description = ex.Message;
+            }
+            return response;
         }
     }
 }

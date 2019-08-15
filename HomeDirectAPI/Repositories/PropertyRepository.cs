@@ -8,11 +8,11 @@ using System.Linq;
 
 namespace HomeDirectAPI.Repositories
 {
-    public class PropertyRepositoey
+    public class PropertyRepository
     {
         private string ConnectionString;
 
-        public BankBranchRepository(IConfiguration configuration)
+        public PropertyRepository(IConfiguration configuration)
         {
             ConnectionString = configuration.GetConnectionString("DefaultConnection");
         }
@@ -23,15 +23,15 @@ namespace HomeDirectAPI.Repositories
             return new MySqlConnection(ConnectionString);
         }
 
-        public ListBankBranchesResponse List()
+        public ListPropertyResponse List()
         {
-            ListBankBranchesResponse response = new ListBankBranchesResponse();
+            ListPropertyResponse response = new ListPropertyResponse();
             try
             {
                 using (IDbConnection conn = GetConnection())
                 {
-                    response.branches = conn.GetList<BankBranch>().ToList();
-                    if (response.branches.Count > 0)
+                    response.properties = conn.GetList<Property>().ToList();
+                    if (response.properties.Count > 0)
                     {
                         response.Status = true;
                         response.Description = "Successful";
@@ -51,15 +51,15 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public BankBranchesResponse Read(int BranchID)
+        public PropertyResponse Read(int ProID)
         {
-            BankBranchesResponse response = new BankBranchesResponse();
+            PropertyResponse response = new PropertyResponse();
             try
             {
                 using (IDbConnection conn = GetConnection())
                 {
-                    response.branch = conn.Get<BankBranch>(BranchID);
-                    if (response.branch != null)
+                    response.property = conn.Get<Property>(ProID);
+                    if (response.property != null)
                     {
                         response.Status = true;
                         response.Description = "Successful";
@@ -79,7 +79,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Add(BankBranch value)
+        public Response Add(Property value)
         {
             Response response = new Response();
             try
@@ -99,7 +99,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Update(BankBranch value)
+        public Response Update(Property value)
         {
             Response response = new Response();
             try
@@ -119,14 +119,14 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int BranchID)
+        public Response Delete(int ProID)
         {
             Response response = new Response();
             try
             {
                 using (IDbConnection conn = GetConnection())
                 {
-                    conn.Delete<BankBranch>(BranchID);
+                    conn.Delete<Property>(ProID);
                     response.Status = true;
                     response.Description = "Successful";
                 }

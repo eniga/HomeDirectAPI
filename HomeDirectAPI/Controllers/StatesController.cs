@@ -2,23 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HomeDirectAPI.Models;
+using HomeDirectAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
 namespace HomeDirectAPI.Controllers
 {
+    [Route("api/[controller]")]
     public class StatesController : Controller
     {
-        public IActionResult Index()
+        StateRepository repo;
+
+        public StatesController(IConfiguration configuration)
         {
-            return View();
+            repo = new StateRepository(configuration);
         }
 
-        //public IActionResult GetState()
-        //{
-        //    JsonSerializer serializer = new JsonSerializer();
-        //    var obj = serializer.Deserialize<MyObject>(File.ReadAllText(@".\path\to\json\config\file.json");
-        //    return View();
-        //}
+        [HttpGet]
+        public ListStateResponse GetState()
+        {
+            return repo.List();
+        }
+
+        [HttpGet("Lga")]
+        public LGAResponse GetByLga(int stateID)
+        {
+            return repo.LgaByStateID(stateID);
+        }
     }
 }
