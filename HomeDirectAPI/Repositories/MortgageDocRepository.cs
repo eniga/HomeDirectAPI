@@ -33,14 +33,68 @@ namespace HomeDirectAPI.Repositories
                 using (IDbConnection conn = GetConnection())
                 {
                     response.MortgageDocs = conn.GetList<MorgageLoanDocs>().ToList();
-                    //if (StartDate.HasValue && EndDate.HasValue)
-                    //{
-                    //    response.mortgageapplications = conn.GetList<MortgageApplication>("where convert(loandate, date) between convert(?StartDate, date) and convert(?EndDate, date)", new { StartDate, EndDate }).ToList();
-                    //}
-                    //else
-                    //{
+                    if (response.MortgageDocs.Count > 0)
+                    {
+                        response.Status = true;
+                        response.Description = "Successful";
+                    }
+                    else
+                    {
+                        response.Status = false;
+                        response.Description = "No data";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Description = ex.Message;
+            }
+            return response;
+        }
 
-                    //}
+        public ListMortgageDocResponse ListByMortgageLoanID(int MortgageLoanID)
+        {
+            ListMortgageDocResponse response = new ListMortgageDocResponse();
+            try
+            {
+                using (IDbConnection conn = GetConnection())
+                {
+                    response.MortgageDocs = conn.GetList<MorgageLoanDocs>("Where MortgageLoanID = ?MortgageLoanID", new { MortgageLoanID }).ToList();
+                    if (response.MortgageDocs.Count > 0)
+                    {
+                        response.Status = true;
+                        response.Description = "Successful";
+                    }
+                    else
+                    {
+                        response.Status = false;
+                        response.Description = "No data";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Description = ex.Message;
+            }
+            return response;
+        }
+
+        public ListMortgageDocResponse ListByUserID(int UserID)
+        {
+            ListMortgageDocResponse response = new ListMortgageDocResponse();
+            string sql = @"SELECT A.* FROM MortgageLoanDocs A
+                        INNER JOIN MortgageLoanApplication B
+                        ON A.MortgageLoanID = B.MortgageLoanID
+                        INNER JOIN Users C
+                        ON B.UserID = C.UserID
+                        WHERE C.UserID = ?UserID";
+            try
+            {
+                using (IDbConnection conn = GetConnection())
+                {
+                    response.MortgageDocs = conn.Query<MorgageLoanDocs>(sql, new { UserID }).ToList();
                     if (response.MortgageDocs.Count > 0)
                     {
                         response.Status = true;
@@ -139,6 +193,34 @@ namespace HomeDirectAPI.Repositories
                     conn.Delete<MorgageLoanDocs>(MortgageId);
                     response.Status = true;
                     response.Description = "Successful";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Description = ex.Message;
+            }
+            return response;
+        }
+
+        public MortgageDocResponse GetDocsPath(int LoanDocsID)
+        {
+            MortgageDocResponse response = new MortgageDocResponse();
+            try
+            {
+                using (IDbConnection conn = GetConnection())
+                {
+                    response.MorgageLoanDoc = conn.Query<MorgageLoanDocs>(" SELECT * FROM MortgageLoanDocs where LoanDocsID = ?LoanDocsID ", new { LoanDocsID }).FirstOrDefault();
+                    if (response.MorgageLoanDoc != null)
+                    {
+                        response.Status = true;
+                        response.Description = "Successful";
+                    }
+                    else
+                    {
+                        response.Status = false;
+                        response.Description = "No data";
+                    }
                 }
             }
             catch (Exception ex)

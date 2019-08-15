@@ -213,5 +213,33 @@ namespace HomeDirectAPI.Repositories
             }
             return response;
         }
+
+        public ListMortgageLoanResponse GetLoanByUserID(int UserID)
+        {
+            ListMortgageLoanResponse response = new ListMortgageLoanResponse();
+            try
+            {
+                using (IDbConnection conn = GetConnection())
+                {
+                    response.applications = conn.Query<MortgageLoanApplication>(" SELECT * FROM hdldb.MortgageLoanApplication where UserID= ?UserID ", new { UserID }).ToList();
+                    if (response.applications.Count > 0)
+                    {
+                        response.Status = true;
+                        response.Description = "Successful";
+                    }
+                    else
+                    {
+                        response.Status = false;
+                        response.Description = "No data";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Description = ex.Message;
+            }
+            return response;
+        }
     }
 }

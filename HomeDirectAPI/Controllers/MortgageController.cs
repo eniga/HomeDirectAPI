@@ -31,6 +31,14 @@ namespace HomeDirectAPI.Controllers
 
             return repo.GetLoanByEmail(email);
         }
+
+        [HttpGet("UserID")]
+        public ListMortgageLoanResponse GetLoanByUserID(int userID)
+        {
+
+            return repo.GetLoanByUserID(userID);
+        }
+
         [HttpGet("Loan/Count")]
         public int GetCount(string email)
         {

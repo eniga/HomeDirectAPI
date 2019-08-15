@@ -1,10 +1,48 @@
 ﻿using System;
+using System.Collections.Generic;
+using Dapper;
+
 namespace HomeDirectAPI.Models
 {
-    public class Loan
+    [Table("Loans")]
+    public class Loans
     {
-        public Loan()
-        {
-        }
+        [Key]
+        public int LoanID { get; set; }
+        public int PropertyID { get; set; }
+        public int UserID { get; set; }
+        public string TitleHolder { get; set; }
+        public decimal LoanAmount { get; set; }
+        public int PaymentStatuteID { get; set; }
+        public string PaymentStatute { get; set; }
+        public int MortgageBankID { get; set; }
+        public string MortgageBank { get; set; }
+        public int Repayments { get; set; }
+        public int Timeline { get; set; }
+        public decimal PerformanceRating { get; set; }
+        public decimal Score { get; set; }
+        [ReadOnly(true)]
+        public DateTime DateCreated { get; set; }
+        public DateTime DateApproved { get; set; }
+        public DateTime LoanDate { get; set; }
+        public int LoanStatusID { get; set; }
+        public string LoanStatus { get; set; }
+        public int LoanBuyerStatusID { get; set; }
+        public string LoanBuyerStatus { get; set; }
+    }
+
+    public class ListLoanResponse : Response
+    {
+        public List<Loans> loans { get; set; }
+    }
+
+    public class LoanResponse : Response
+    {
+        public Loans loan { get; set; }
+    }
+
+    public class PendingLoanResponse : Response
+    {
+        public int NumberOfPending { get; set; }
     }
 }
