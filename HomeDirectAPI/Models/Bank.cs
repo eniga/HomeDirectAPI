@@ -19,6 +19,7 @@ namespace HomeDirectAPI.Models
         public string LocationLat { get; set; }
         public string LocationLong { get; set; }
         public decimal Rate { get; set; }
+        public int Balance { get; set; }
     }
 
     public class ListBankResponse : Response

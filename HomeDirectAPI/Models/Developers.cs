@@ -21,6 +21,7 @@ namespace HomeDirectAPI.Models
         [ReadOnly(true)]
         public DateTime RegDate { get; set; }
         public string AccountStatus { get; set; }
+        public string CompanyName { get; set; }
     }
 
     public class ListDeveloperResponse : Response

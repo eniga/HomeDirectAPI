@@ -36,6 +36,12 @@ namespace HomeDirectAPI.Models
         public DateTime date { get; set; }
         public string dateadded { get; set; }
         public string prop_lga { get; set; }
+        public decimal prop_discount { get; set; }
+        public string discount_status { get; set; }
+        public decimal prop_fee { get; set; }
+        public string prop_fee_status { get; set; }
+        public string discount_expiry { get; set; }
+        public string InvoiceID { get; set; }
     }
 
     public class ListListingsResponse : Response
