@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("UserTypes")]
+    [Table("usertypes")]
     public class UserTypes
     {
         [Key]

@@ -4,7 +4,7 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("LoanMarketShare")]
+    [Table("loanmarketshare")]
     public class LoanMarketShare
     {
         [Key]

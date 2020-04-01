@@ -84,6 +84,13 @@ namespace HomeDirectAPI.Repositories
             Response response = new Response();
             try
             {
+                var exist = List().branches.Where(x => x.BranchName.ToLower() == value.BranchName.ToLower());
+                if (exist.Count() > 0)
+                {
+                    response.Status = false;
+                    response.Description = "Record already exists";
+                    return response;
+                }
                 using(IDbConnection conn = GetConnection())
                 {
                     conn.Insert(value);

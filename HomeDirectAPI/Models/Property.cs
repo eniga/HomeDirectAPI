@@ -4,7 +4,7 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("Properties")]
+    [Table("properties")]
     public class Property
     {
         [Key]

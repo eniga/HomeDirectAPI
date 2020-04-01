@@ -4,19 +4,20 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("Messages")]
+    [Table("messages")]
     public class Messages
     {
         [Key]
-        public int MessageID { get; set; }
-        public int From { get; set; }
-        public string FromName { get; set; }
-        public int To { get; set; }
-        public string ToName { get; set; }
-        public string Subject { get; set; }
+        public int ID { get; set; }
+        public string ThreadID { get; set; }
+        public string SenderID { get; set; }
+        public string RecipientID { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
         public string Message { get; set; }
-        public DateTime MessageDate { get; set; }
-        public List<Attachments> attachments { get; set; }
+        public DateTime MsgDate { get; set; }
+        public DateTime MsgDate2 { get; set; }
     }
 
     public class ListMessagesResponse : Response

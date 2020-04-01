@@ -4,7 +4,7 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("MortgageDashboard")]
+    [Table("mortgagedashboard")]
     public class MortgageDashboard
     {
         [Key]
@@ -23,10 +23,6 @@ namespace HomeDirectAPI.Models
         public decimal October { get; set; }
         public decimal November { get; set; }
         public decimal December { get; set; }
-
-        public MortgageDashboard()
-        {
-        }
     }
 
     public class ListMortgageDashboard : Response

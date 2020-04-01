@@ -23,7 +23,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET: api/values
         [HttpGet]
-        public ListRoleResponse Get()
+        public ListRoleResponse List()
         {
             return repo.List();
         }

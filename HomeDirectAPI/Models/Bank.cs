@@ -4,7 +4,7 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("Banks")]
+    [Table("banks")]
     public class Bank
     {
         [Key]
@@ -13,9 +13,12 @@ namespace HomeDirectAPI.Models
         public string HQAddress { get; set; }
         public string BankCategory { get; set; }
         public int BankAdminUserID { get; set; }
+        [NotMapped]
+        public string BankAdminUser { get; set; }
         public string Location { get; set; }
         public string LocationLat { get; set; }
         public string LocationLong { get; set; }
+        public decimal Rate { get; set; }
     }
 
     public class ListBankResponse : Response

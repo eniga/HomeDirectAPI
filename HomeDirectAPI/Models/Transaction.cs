@@ -4,7 +4,7 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("Transactions")]
+    [Table("transactions")]
     public class Transaction
     {
         [Key]
@@ -12,13 +12,14 @@ namespace HomeDirectAPI.Models
         public DateTime TxnDate { get; set; }
         public int BuyerID { get; set; }
         public int UserID { get; set; }
-        public decimal Repayment { get; set; }
+        public string RepaytxID { get; set; }
         public decimal Amount { get; set; }
-        public decimal InterestRate { get; set; }
-        public decimal Outstanding { get; set; }
-        public DateTime DueDate { get; set; }
+        public string RepaymentID { get; set; }
+        public string LoanID { get; set; }
+        public string DueDate { get; set; }
         public string Bank { get; set; }
         public string LoanStatus { get; set; }
+        public string InvoiceID { get; set; }
     }
 
     public class ListTransactionResponse : Response

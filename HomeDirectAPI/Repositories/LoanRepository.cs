@@ -6,16 +6,21 @@ using HomeDirectAPI.Models;
 using System.Data;
 using System.Linq;
 using System.Collections.Generic;
+using HomeDirectAPI.Service;
 
 namespace HomeDirectAPI.Repositories
 {
     public class LoanRepository
     {
         private string ConnectionString;
+        CustomerAcquisitionService customerAcquisitionService;
+        PropertyRepository propertyRepository;
 
         public LoanRepository(IConfiguration configuration)
         {
             ConnectionString = configuration.GetConnectionString("DefaultConnection");
+            customerAcquisitionService = new CustomerAcquisitionService(configuration);
+            propertyRepository = new PropertyRepository(configuration);
         }
 
         private MySqlConnection GetConnection()
@@ -249,7 +254,10 @@ namespace HomeDirectAPI.Repositories
                     {
                         Loans loan = new Loans();
                         loan = conn.Get<Loans>(item.LoanID);
-                        loans.Add(loan);
+                        if (loan != null)
+                        {
+                            loans.Add(loan);
+                        }
                     });
                     if (loans.Count > 0)
                     {
@@ -298,6 +306,107 @@ namespace HomeDirectAPI.Repositories
                         response.Status = false;
                         response.Description = "No data";
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Description = ex.Message;
+            }
+            return response;
+        }
+
+        public Object GetCustomerAcquisitionByLoanID(int LoanID)
+        {
+            Object response = new Object();
+            try
+            {
+                var loandata = Read(LoanID);
+                if (!loandata.Status)
+                    return new Response() { Status = loandata.Status, Description = loandata.Description };
+
+                var loan = loandata.loan;
+                CustomerAcquisitionRequest request = new CustomerAcquisitionRequest();
+                Options options = new Options()
+                {
+                    ProductType = "LOAN",
+                    BureauProductTypeOverride = "MB",
+                    IsQuoteFlag = "Y",
+                    AgentID = "HDL",
+                    CustomerType = "CON",
+                    OrderNumber = string.Format("HDL{0}", loan.LoanID),
+                    UserID = string.Format("HDL{0}", loan.UserID)
+                };
+                var propertResponse = propertyRepository.Read(loan.PropertyID);
+                if (!propertResponse.Status)
+                    return new Response() { Status = false, Description = "Invalid Property" };
+
+                //var property = propertResponse.property;
+                Application application = new Application()
+                {
+                    Amount = (int)loan.LoanAmount,
+                    Term = loan.Timeline,
+                    Purpose = "Mortgage",
+                    PropertyValue = (int)loan.LoanAmount
+                };
+            }
+            catch (Exception ex)
+            {
+                response = null;
+                throw new Exception(ex.Message);
+            }
+            return response;
+        }
+
+        public LoanGroupByBankResponse GetLoanGroupByBank()
+        {
+            LoanGroupByBankResponse response = new LoanGroupByBankResponse();
+            try
+            {
+                using(IDbConnection conn = GetConnection())
+                {
+                    string sql = @"select b.BankID, b.BankName, SUM(a.LoanAmount) FlaggedValue , COUNT(a.MortgageBankID) Units
+                                    from loans a inner join banks b on a.MortgageBankID = b.BankID
+                                    group by a.MortgageBankID, b.BankName";
+                    var result = conn.Query<LoanGroupByBank>(sql).ToList();
+                    if(result.Count > 0)
+                    {
+                        response.Status = true;
+                        response.Description = "Success";
+                        response.loans = result;
+                        response.applications = conn.GetList<MortgageLoanApplication>().ToList();
+                    }
+                    else
+                    {
+                        response.Status = false;
+                        response.Description = "No data";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Description = ex.Message;
+                throw new Exception(ex.Message);
+            }
+            return response;
+        }
+
+        public AdvanceQueryResponse AdvanceQuery(string Country = null)
+        {
+            AdvanceQueryResponse response = new AdvanceQueryResponse();
+            string sql = @"select b.country, SUM(a.LoanAmount) LoanAmount from loans a inner join users b on a.UserID = b.UserID
+                            group by b.country";
+            try
+            {
+                using(IDbConnection conn = GetConnection())
+                {
+                    var result = conn.Query<AdvanceQueryResult>(sql);
+                    if (!string.IsNullOrEmpty(Country))
+                        result = result.Where(x => x.Country == Country);
+                    response.Status = true;
+                    response.Description = "Success";
+                    response.result = result.ToList();
                 }
             }
             catch (Exception ex)

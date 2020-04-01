@@ -140,7 +140,7 @@ namespace HomeDirectAPI.Repositories
                       @MortgageType = value.MortgageType,
                        @AmountBorrowed= value.AmountBorrowed,
                        @MortgageCategory= value.MortgageCategory,
-                      @Paymentterms = value.Paymentterms,
+                      @Paymentterms = (int.Parse(value.Paymentterms) * 12).ToString(),
                        @FirstName =value.FirstName,
                       @LastName=  value.LastName,
                        @DOB= value.DOB,
@@ -238,6 +238,133 @@ namespace HomeDirectAPI.Repositories
             {
                 response.Status = false;
                 response.Description = ex.Message;
+            }
+            return response;
+        }
+
+        public Response UpdateMortgageStatus(UpdateLoanStatus value)
+        {
+            Response response = new Response();
+            try
+            {
+                using(IDbConnection conn = GetConnection())
+                {
+                    response = ApproveTask(value);
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Description = ex.Message;
+            }
+            return response;
+        }
+
+        public Response ApproveTask(UpdateLoanStatus value)
+        {
+            Response response = new Response();
+            string sql = "UPDATE mortgageloanapplication SET LoanStatus = ?LoanStatus, ApprovedDate =?ApprovedDate Where MortgageLoanID = ?MortgageLoanID";
+            
+            using(IDbConnection conn = GetConnection())
+            {
+                if (value.LoanStatus.Contains("Approved"))
+                {
+                    conn.Open();
+                    var tran = conn.BeginTransaction();
+                    try
+                    {
+                        var mortgage = conn.Get<MortgageLoanApplication>(value.MortgageLoanID);
+                        var banks = conn.Get<Bank>(mortgage.BankID);
+                        var status = conn.Get<LoanStatuses>(4);
+                        var paymentstatute = conn.Get<PaymentStatutes>(5);
+                        var loan = new Loans()
+                        {
+                            DateApproved = mortgage.ApprovedDate.HasValue ? mortgage.ApprovedDate.Value : DateTime.Now,
+                            DateCreated = DateTime.Now,
+                            LoanAmount = Convert.ToDecimal(mortgage.AmountBorrowed),
+                            LoanBuyerStatus = mortgage.LoanStatus,
+                            LoanBuyerStatusID = 1,
+                            LoanDate = mortgage.LoanDate.Value,
+                            LoanStatus = status.LoanStatus,
+                            MortgageBank = banks.BankName,
+                            TitleHolder = mortgage.FullName,
+                            PropertyID = long.Parse(mortgage.ProID),
+                            UserID = mortgage.UserID,
+                            MortgageBankID = int.Parse(mortgage.BankID),
+                            Timeline = int.Parse(mortgage.Paymentterms),
+                            PerformanceRating = 100M,
+                            Repayments = int.Parse(mortgage.Paymentterms),
+                            LoanStatusID = status.LoanStatusID,
+                            PaymentStatuteID = paymentstatute.PaymentStatuteID,
+                            PaymentStatute = paymentstatute.PaymentStatute,
+                            Score = 100M
+                        };
+                        var loanID = conn.Insert(loan);
+                        decimal rate = decimal.Parse("100.00");
+                        var rating = new LoanRating()
+                        {
+                            LoanID = loanID.Value,
+                            Rating = rate,
+                            RatingDesc = "Performing"
+                        };
+                        conn.Insert(rating);
+                        var loanDocs = conn.GetList<MorgageLoanDocs>("Where MortgageLoanID = ?MortgageLoanID", new { value.MortgageLoanID }).AsList();
+                        loanDocs.ForEach(item =>
+                        {
+                            var loandoc = new LoanDoc()
+                            {
+                                DocDesc = item.DocsDesc,
+                                DocLink = item.DocsLink,
+                                DocName = item.DocsName,
+                                LoanID = loanID.Value,
+                                MortgageId = value.MortgageLoanID
+                            };
+                            conn.Insert(loandoc);
+                        });
+                        // insert into repayment history
+                        var uus = conn.Get<UUSBanks>(loan.MortgageBankID);
+                        decimal totalrepayment = loan.LoanAmount * (1 + ((uus.InterestRate /100) * (loan.Timeline / 12)));
+                        decimal monthly = totalrepayment / loan.Timeline;
+                        int duration = 0;
+                        while (duration < loan.Timeline)
+                        {
+                            duration++;
+                            var repayment = new RepaymentHistory()
+                            {
+                                InterestRate = uus.InterestRate,
+                                Amount = monthly,
+                                LoanID = loanID.Value,
+                                Outstanding = totalrepayment - (monthly * duration),
+                                Repayment = "Unpaid",
+                                DueDate = loan.LoanDate.AddMonths(duration).ToLongDateString(),
+                                TransactionDate = loan.LoanDate.AddMonths(duration)
+                            };
+                            conn.Insert(repayment);
+                        }
+                        var req = new UpdateLoanStatus2()
+                        {
+                            ApprovedDate = mortgage.ApprovedDate.HasValue ? mortgage.ApprovedDate.Value : DateTime.Now,
+                            LoanStatus = value.LoanStatus,
+                            MortgageLoanID = value.MortgageLoanID
+                        };
+                        conn.Execute(sql, req);
+                        response.Status = true;
+                        response.Description = "Successful";
+                        tran.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        response.Status = false;
+                        response.Description = ex.Message;
+                    }
+                }
+                else
+                {
+                    conn.Execute(sql, value);
+                    response.Status = true;
+                    response.Description = "Successful";
+                }
             }
             return response;
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HomeDirectAPI.Models;
 using HomeDirectAPI.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -23,7 +24,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET: api/values
         [HttpGet]
-        public ListLoanResponse Get([FromQuery] DateTime? StartDate = null, [FromQuery] DateTime? EndDate = null)
+        public ListLoanResponse List([FromQuery] DateTime? StartDate = null, [FromQuery] DateTime? EndDate = null)
         {
             return repo.List(StartDate, EndDate);
         }
@@ -110,5 +111,28 @@ namespace HomeDirectAPI.Controllers
             return repo.GetByBank(bankId, StartDate, EndDate);
         }
 
+        [HttpPost("report/{LoanID}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomerAcquisitionResponse))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CustomerAcquisitionFailedResponse))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(Response))]
+        public ActionResult GetLoanReport(int LoanID)
+        {
+            var result = repo.GetCustomerAcquisitionByLoanID(LoanID);
+            if (result.GetType() == typeof(Response))
+                return NotFound(result);
+            return NoContent();
+        }
+
+        [HttpGet("bank/group")]
+        public LoanGroupByBankResponse GetLoanGroupByBank()
+        {
+            return repo.GetLoanGroupByBank();
+        }
+
+        [HttpGet("AdvanceQuery")]
+        public AdvanceQueryResponse AdvanceQuery(string Country = null)
+        {
+            return repo.AdvanceQuery(Country);
+        }
     }
 }

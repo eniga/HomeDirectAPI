@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("MortgageApplication")]
     public class MortgageApplication
     {
-        [Key]
         public int MortgageId { get; set; }
 
         public int ProID { get; set; }

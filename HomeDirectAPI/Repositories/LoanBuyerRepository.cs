@@ -84,6 +84,13 @@ namespace HomeDirectAPI.Repositories
             Response response = new Response();
             try
             {
+                var exist = List().loanbuyers.Where(x => x.Location.ToLower() == value.Location.ToLower());
+                if (exist.Count() > 0)
+                {
+                    response.Status = false;
+                    response.Description = "Record already exists";
+                    return response;
+                }
                 using (IDbConnection conn = GetConnection())
                 {
                     conn.Insert(value);

@@ -21,7 +21,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET: api/values
         [HttpGet]
-        public ListUserTypeResponse Get()
+        public ListUserTypeResponse List()
         {
             return repo.List();
         }

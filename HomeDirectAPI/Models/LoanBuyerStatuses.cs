@@ -3,7 +3,7 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("LoanBuyerStatuses")]
+    [Table("loanbuyerstatuses")]
     public class LoanBuyerStatuses
     {
         [Key]

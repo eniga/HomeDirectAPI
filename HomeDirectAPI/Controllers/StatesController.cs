@@ -31,5 +31,17 @@ namespace HomeDirectAPI.Controllers
         {
             return repo.LgaByStateID(stateID);
         }
+
+        [HttpGet("LgaID")]
+        public LGAsResponse GetLGAByID(int LgaID)
+        {
+            return repo.GetLgaID(LgaID);
+        }
+
+        [HttpGet("StateID")]
+        public StateResponse GetStateByStateID(int stateID)
+        {
+            return repo.GetstatebyID(stateID);
+        }
     }
 }

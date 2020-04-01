@@ -33,6 +33,15 @@ namespace HomeDirectAPI.Repositories
                     response.banks = conn.GetList<Bank>().ToList();
                     if (response.banks.Count > 0)
                     {
+                        int i = 0;
+                        while (i < response.banks.Count)
+                        {
+                            var id = response.banks[i].BankAdminUserID;
+                            var user = conn.Get<User>(id);
+                            if(user != null)
+                                response.banks[i].BankAdminUser = user.FullName;
+                            i++;
+                        }
                         response.Status = true;
                         response.Description = "Successful";
                     }
@@ -61,6 +70,9 @@ namespace HomeDirectAPI.Repositories
                     response.bank = conn.Get<Bank>(BankID);
                     if (response.bank != null)
                     {
+                        var user = conn.Get<User>(response.bank.BankAdminUserID);
+                        if (user != null)
+                            response.bank.BankAdminUser = user.FullName;
                         response.Status = true;
                         response.Description = "Successful";
                     }
@@ -84,6 +96,13 @@ namespace HomeDirectAPI.Repositories
             Response response = new Response();
             try
             {
+                var exist = List().banks.Where(x => x.BankName.ToLower() == value.BankName.ToLower());
+                if (exist.Count() > 0)
+                {
+                    response.Status = false;
+                    response.Description = "Record already exists";
+                    return response;
+                }
                 using (IDbConnection conn = GetConnection())
                 {
                     conn.Insert(value);

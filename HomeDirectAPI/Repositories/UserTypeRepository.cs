@@ -87,7 +87,14 @@ namespace HomeDirectAPI.Repositories
                 Response response = new Response();
                 try
                 {
-                    using (IDbConnection conn = GetConnection())
+                var exist = List().usertypes.Where(x => x.TypeName.ToLower() == value.TypeName.ToLower());
+                if (exist.Count() > 0)
+                {
+                    response.Status = false;
+                    response.Description = "Record already exists";
+                    return response;
+                }
+                using (IDbConnection conn = GetConnection())
                     {
                         conn.Insert(value);
                         response.Status = true;

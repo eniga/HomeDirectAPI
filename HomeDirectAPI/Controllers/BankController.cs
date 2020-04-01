@@ -23,35 +23,35 @@ namespace HomeDirectAPI.Controllers
 
         // GET: api/values
         [HttpGet]
-        public ListBankResponse Get()
+        public ListBankResponse List()
         {
             return repo.List();
         }
 
         // GET api/values/5
         [HttpGet("{BankID}")]
-        public BankResponse Get(int BankID)
+        public BankResponse GetBank(int BankID)
         {
             return repo.Read(BankID);
         }
 
         // POST api/values
         [HttpPost]
-        public Response Post([FromBody]Bank value)
+        public Response AddBank([FromBody]Bank value)
         {
             return repo.Add(value);
         }
 
         // PUT api/values/5
         [HttpPut]
-        public Response Put([FromBody]Bank value)
+        public Response UpdateBank([FromBody]Bank value)
         {
             return repo.Update(value);
         }
 
         // DELETE api/values/5
         [HttpDelete("{BankID}")]
-        public Response Delete(int BankID)
+        public Response DeleteBank(int BankID)
         {
             return repo.Delete(BankID);
         }

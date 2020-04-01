@@ -4,7 +4,7 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("Permissions")]
+    [Table("permissions")]
     public class Permissions
     {
         [Key]

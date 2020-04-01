@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public PropertyResponse Read(int ProID)
+        public PropertyResponse Read(long ProID)
         {
             PropertyResponse response = new PropertyResponse();
             try
@@ -119,7 +119,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int ProID)
+        public Response Delete(long ProID)
         {
             Response response = new Response();
             try

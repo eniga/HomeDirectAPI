@@ -4,12 +4,12 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("Loans")]
+    [Table("loans")]
     public class Loans
     {
         [Key]
         public int LoanID { get; set; }
-        public int PropertyID { get; set; }
+        public long PropertyID { get; set; }
         public int UserID { get; set; }
         public string TitleHolder { get; set; }
         public decimal LoanAmount { get; set; }
@@ -44,5 +44,30 @@ namespace HomeDirectAPI.Models
     public class PendingLoanResponse : Response
     {
         public int NumberOfPending { get; set; }
+    }
+
+    public class LoanGroupByBank
+    {
+        public int BankID { get; set; }
+        public string BankName { get; set; }
+        public decimal FlaggedValue { get; set; }
+        public int Units { get; set; }
+    }
+
+    public class LoanGroupByBankResponse : Response
+    {
+        public List<LoanGroupByBank> loans { get; set; }
+        public List<MortgageLoanApplication> applications { get; set; }
+    }
+
+    public class AdvanceQueryResult
+    {
+        public string Country { get; set; }
+        public decimal LoanAmount { get; set; }
+    }
+
+    public class AdvanceQueryResponse : Response
+    {
+        public List<AdvanceQueryResult> result { get; set; }
     }
 }

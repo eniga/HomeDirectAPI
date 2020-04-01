@@ -23,7 +23,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET: api/values
         [HttpGet]
-        public ListBankConfigResponse Get()
+        public ListBankConfigResponse List()
         {
             return repo.List();
         }
@@ -37,14 +37,14 @@ namespace HomeDirectAPI.Controllers
 
         // POST api/values
         [HttpPost]
-        public Response Post([FromBody]BankConfig value)
+        public Response Add([FromBody]BankConfig value)
         {
             return repo.Add(value);
         }
 
         // PUT api/values/5
         [HttpPut]
-        public Response Put([FromBody]BankConfig value)
+        public Response Update([FromBody]BankConfig value)
         {
             return repo.Update(value);
         }

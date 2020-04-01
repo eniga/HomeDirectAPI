@@ -23,7 +23,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET: api/values
         [HttpGet]
-        public ListMortgageDashboard Get()
+        public ListMortgageDashboard List()
         {
             return repo.List();
         }

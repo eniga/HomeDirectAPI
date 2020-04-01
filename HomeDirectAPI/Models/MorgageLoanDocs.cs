@@ -8,20 +8,19 @@ using System.Threading.Tasks;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("MortgageLoanDocs")]
+    [Table("mortgageloandocs")]
     public class MorgageLoanDocs
     {
         [Key]
         public int LoanDocsID { get; set; }
         public int MortgageLoanID { get; set; }
-
-        public string DocsName { get; set; }
-
         public string DocsDesc { get; set; }
-
         public string DocsLink { get; set; }
-        public IFormFile attachment { get; set; }
-        // public HttpRequest Request { get; set; }
+        public string DocsName { get; set; }
+        public string Docpath { get; set; }
+        public string DocsUrl { get; set; }
+        public string Docsstatus { get; set; }
+        public string attachment { get; set; }
     }
 
     public class ListMortgageDocResponse : Response
@@ -32,5 +31,11 @@ namespace HomeDirectAPI.Models
     public class MortgageDocResponse : Response
     {
         public MorgageLoanDocs MorgageLoanDoc { get; set; }
+    }
+
+    public class UpdateMortgageLoanDocs
+    {
+        public int LoanDocsID { get; set; }
+        public string Docsstatus { get; set; }
     }
 }

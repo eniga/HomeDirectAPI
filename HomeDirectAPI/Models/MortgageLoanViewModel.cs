@@ -15,8 +15,9 @@ namespace HomeDirectAPI.Models
         public string DocsName { get; set; }
 
         public string DocsDesc { get; set; }
+        public string DocsStatus { get; set; }
 
         public string DocsLink { get; set; }
-        public IFormFile attachment { get; set; }
+        public string attachment { get; set; }
     }
 }

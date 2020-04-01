@@ -4,7 +4,7 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("BankConfig")]
+    [Table("bankconfig")]
     public class BankConfig
     {
         [Key]

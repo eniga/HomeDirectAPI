@@ -33,7 +33,7 @@ namespace HomeDirectAPI.Repositories
                 sum(if(paymentstatuteid = 3, 1, 0)) 'Default',
                 sum(if(paymentstatuteid = 4, 1, 0)) Late,
                 sum(if(paymentstatuteid = 5, 1, 0)) Performing
-                from Loans";
+                from loans";
             try
             {
                 using (IDbConnection conn = GetConnection())
@@ -80,7 +80,7 @@ namespace HomeDirectAPI.Repositories
                 sum(if(paymentstatuteid = 3, 1, 0)) 'Default',
                 sum(if(paymentstatuteid = 4, 1, 0)) Late,
                 sum(if(paymentstatuteid = 5, 1, 0)) Performing
-                from Loans where LoanID = ?id";
+                from loans where LoanID = ?id";
             try
             {
                 using (IDbConnection conn = GetConnection())
@@ -107,7 +107,7 @@ namespace HomeDirectAPI.Repositories
             sum(if(paymentstatuteid = 3, 1, 0)) 'Default',
             sum(if(paymentstatuteid = 4, 1, 0)) Late,
             sum(if(paymentstatuteid = 5, 1, 0)) Performing
-            from Loans where MortgageBankID = ?BankId
+            from loans where MortgageBankID = ?BankId
             group by CONCAT(LPAD(MONTH(LoanDate),2, '0'), '/', YEAR(LoanDate))";
             try
             {

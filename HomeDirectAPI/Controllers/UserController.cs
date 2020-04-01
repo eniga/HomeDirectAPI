@@ -23,20 +23,26 @@ namespace HomeDirectAPI.Controllers
 
         // GET: api/values
         [HttpGet]
-        public ListUserResponse Get()
+        public ListUserResponse GetAllUsers()
         {
             return repo.List();
         }
 
+        [HttpGet("ByUserType/{UserType}")]
+        public ListUserResponse ListByUserTypes(string UserType)
+        {
+            return repo.ListByUserTypes(UserType);
+        }
+
         // GET api/values/5
         [HttpGet("{UserID}")]
-        public UserResponse Get(int UserID)
+        public UserResponse GetUser(int UserID)
         {
             return repo.Read(UserID);
         }
 
         [HttpGet("Email")]
-        public Response Getuserbyemail(string email)
+        public Response GetUserbyemail(string email)
         {
 
             return repo.GetUserByEmail(email);
@@ -44,14 +50,14 @@ namespace HomeDirectAPI.Controllers
 
         // POST api/values
         [HttpPost]
-        public Response Post([FromBody]User value)
+        public Response AddUser([FromBody]User value)
         {
             return repo.Add(value);
         }
 
         // POST api/values
         [HttpPost("Authenticate")]
-        public Response Post([FromBody]Login value)
+        public Response AuthenticateUser([FromBody]Login value)
         {
 
             return repo.Authenticate(value.Email, value.password);
@@ -59,14 +65,14 @@ namespace HomeDirectAPI.Controllers
 
         // PUT api/values/5
         [HttpPut]
-        public Response Put([FromBody]User value)
+        public Response UpdateUser([FromBody]User value)
         {
             return repo.Update(value);
         }
 
         // DELETE api/values/5
         [HttpDelete("{UserID}")]
-        public Response Delete(int UserID)
+        public Response DeleteUser(int UserID)
         {
             return repo.Delete(UserID);
         }

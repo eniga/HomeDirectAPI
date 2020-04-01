@@ -4,12 +4,13 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("LoanDocs")]
+    [Table("loandocs")]
     public class LoanDoc
     {
         [Key]
         public int DocID { get; set; }
         public int LoanID { get; set; }
+        public int MortgageId { get; set; }
         public string DocName { get; set; }
         public string DocDesc { get; set; }
         public string DocLink { get; set; }

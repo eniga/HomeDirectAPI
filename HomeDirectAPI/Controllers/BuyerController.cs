@@ -23,28 +23,28 @@ namespace HomeDirectAPI.Controllers
 
         // GET: api/values
         [HttpGet]
-        public ListBuyerResponse Get()
+        public ListBuyerResponse List()
         {
             return repo.List();
         }
 
         // GET api/values/5
         [HttpGet("{BuyerID}")]
-        public BuyerResponse Get(int BuyerID)
+        public BuyerResponse Read(int BuyerID)
         {
             return repo.Read(BuyerID);
         }
 
         // POST api/values
         [HttpPost]
-        public Response Post([FromBody]Buyer value)
+        public Response Add([FromBody]Buyer value)
         {
             return repo.Add(value);
         }
 
         // PUT api/values/5
         [HttpPut]
-        public Response Put([FromBody]Buyer value)
+        public Response Update([FromBody]Buyer value)
         {
             return repo.Update(value);
         }

@@ -4,13 +4,13 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("LGA")]
+    [Table("lga")]
     public class Local
     {
-        public string lgaName { get; set; }
         [Key]
         public int LgaID { get; set; }
         public int StateID { get; set; }
+        public string lgaName { get; set; }
     }
 
     public class State
@@ -19,7 +19,7 @@ namespace HomeDirectAPI.Models
         public int id { get; set; }
         public List<Local> locals { get; set; }
     }
-    [Table("State")]
+    [Table("state")]
     public class StateResp
     {
         public string StateName { get; set; }
@@ -36,8 +36,17 @@ namespace HomeDirectAPI.Models
     {
         public List<StateResp> states { get; set; }
     }
+    public class StateResponse : Response
+    {
+        public StateResp state { get; set; }
+    }
     public class LGAResponse : Response
     {
         public List<Local> lgas { get; set; }
+    }
+
+    public class LGAsResponse : Response
+    {
+        public Local lga { get; set; }
     }
 }

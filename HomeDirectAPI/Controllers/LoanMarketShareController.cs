@@ -23,7 +23,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET: api/values
         [HttpGet]
-        public ListLoanMarketShareResponse Get([FromQuery] DateTime? StartDate = null, [FromQuery] DateTime? EndDate = null)
+        public ListLoanMarketShareResponse List([FromQuery] DateTime? StartDate = null, [FromQuery] DateTime? EndDate = null)
         {
             return repo.List(StartDate, EndDate);
         }

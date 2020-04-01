@@ -3,7 +3,7 @@ using Dapper;
 
 namespace HomeDirectAPI.Models
 {
-    [Table("Attachments")]
+    [Table("attachments")]
     public class Attachments
     {
         [Key]

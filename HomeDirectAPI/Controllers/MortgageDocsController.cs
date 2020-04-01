@@ -25,7 +25,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET: api/values
         [HttpGet]
-        public ListMortgageDocResponse Get()
+        public ListMortgageDocResponse List()
         {
             return repo.List();
         }
@@ -58,38 +58,43 @@ namespace HomeDirectAPI.Controllers
 
         // POST api/values
         [HttpPost]
-        public Response Post([FromForm]MortgageLoanViewModel value)
+        public Response Post([FromBody] MortgageLoanViewModel value)
         {
-            MorgageLoanDocs valuedocs = new MorgageLoanDocs();
-            var file = Request.Form.Files[0];
-            var folderName = Path.Combine("Resources", "Images");
-            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-            //= new MorgageLoanDocs();
-            if (file.Length > 0)
+            Response response = new Response();
+
+            try
             {
-                var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                var fullPath = Path.Combine(pathToSave, fileName);
-                var dbPath = Path.Combine(folderName, fileName);
+                string base64String = value.attachment;
+                string ImageType = base64String.Split(';')[0].Split('/')[1];
+                string ImageName = $"image_{DateTime.Now.ToString("yyyyMMddhhmmssff")}.{ImageType}";
+                String path = "~/Resources/Uploads/";
 
-                valuedocs.DocsDesc = "Loan Docs Upload";
-                valuedocs.MortgageLoanID = Convert.ToInt32(value.MortgageLoanID);
-                valuedocs.DocsLink = dbPath;
-                valuedocs.DocsName = fileName;
-                using (var stream = new FileStream(fullPath, FileMode.Create))
+                MorgageLoanDocs valuedocs = new MorgageLoanDocs()
                 {
-                   file.CopyTo(stream);
-                }
+                    attachment = value.attachment,
+                    DocsDesc = "Loan Docs Upload",
+                    DocsLink = path,
+                    DocsName = ImageName,
+                    LoanDocsID = value.LoanDocsID,
+                    MortgageLoanID = Convert.ToInt32(value.MortgageLoanID)
+                };
 
-                //return Ok(new { dbPath });
+
+                Helper.SaveImage(base64String, ImageName);
+
+                // process uploaded files
+                // Don't rely on or trust the FileName property without validation.
+
+                //return Ok(new { count = files.Count, size, filePath });
+
+                response = repo.Add(valuedocs);
             }
-
-
-            // process uploaded files
-            // Don't rely on or trust the FileName property without validation.
-
-            //return Ok(new { count = files.Count, size, filePath });
-
-            return repo.Add(valuedocs);
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Description = ex.Message;
+            }
+            return response;
         }
 
         [HttpGet("Name")]
