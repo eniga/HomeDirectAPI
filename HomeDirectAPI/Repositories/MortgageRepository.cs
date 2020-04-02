@@ -120,48 +120,12 @@ namespace HomeDirectAPI.Repositories
         public MortgageResponse Add(MortgageLoanApplication value)
         {
             MortgageResponse response = new MortgageResponse();
-            var sql = "Insert into MortgageLoanApplication" +
-"(UserID, ProID, ProName, MortgageType, AmountBorrowed, MortgageCategory, Paymentterms, FirstName, LastName, DOB, Email, PhoneNumber, CustomerBank, EmploymentStatus," +
-"NumberOfDependants, AnnualIncome, PrefferedFinInst, ContactConsent, StatutoryAcceptanceConsent, BusinessTermsConsent, AuthorisationConsent, LoanDate, CreatedDate, ApprovedDate)" +
-       " values" +
-          "(?UserID, ?ProID, ?ProName, ?MortgageType, ?AmountBorrowed, ?MortgageCategory, ?Paymentterms, ?FirstName, ?LastName, ?DOB, ?Email, ?PhoneNumber, ?CustomerBank, ?EmploymentStatus," +
-"?NumberOfDependants, ?AnnualIncome, ?PrefferedFinInst, ?ContactConsent, ?StatutoryAcceptanceConsent, ?BusinessTermsConsent, ?AuthorisationConsent, ?LoanDate, ?CreatedDate, ?ApprovedDate);" +
- 
-"select LAST_INSERT_ID();";
             try
             {
                 using (IDbConnection conn = GetConnection())
                 {
-                  var id=  conn.Query<int>(sql, new
-                  {
-                       @UserID = value.UserID,
-                       @ProID= value.ProID,
-                       @ProName= value.ProName,
-                      @MortgageType = value.MortgageType,
-                       @AmountBorrowed= value.AmountBorrowed,
-                       @MortgageCategory= value.MortgageCategory,
-                      @Paymentterms = (int.Parse(value.Paymentterms) * 12).ToString(),
-                       @FirstName =value.FirstName,
-                      @LastName=  value.LastName,
-                       @DOB= value.DOB,
-                      @Email=  value.Email,
-                      @PhoneNumber = value.PhoneNumber,
-                      @CustomerBank=  value.CustomerBank,
-                       @EmploymentStatus =value.EmploymentStatus,
-                       @NumberOfDependants= value.NumberOfDependants,
-                       @AnnualIncome =value.AnnualIncome,
-                       @PrefferedFinInst= value.PrefferedFinInst,
-                       @ContactConsent= value.ContactConsent,
-                       @StatutoryAcceptanceConsent= value.StatutoryAcceptanceConsent,
-                       @BusinessTermsConsent= value.BusinessTermsConsent,
-                       @AuthorisationConsent =value.AuthorisationConsent,
-                      @LoanDate= value.LoanDate,
-                      @CreatedDate=  value.CreatedDate,
-                      @ApprovedDate=  value.ApprovedDate
-                    }).First();
-                   // conn.Insert(value);
-                    //var Id = value.MortgageLoanID;
-                    response.MortgageId = id;
+                    var id = conn.Insert(value);
+                    response.MortgageId = id.Value;
                     response.Status = true;
                     response.Description = "Successful";
                 }
@@ -221,7 +185,7 @@ namespace HomeDirectAPI.Repositories
             {
                 using (IDbConnection conn = GetConnection())
                 {
-                    response.applications = conn.Query<MortgageLoanApplication>(" SELECT * FROM hdldb.MortgageLoanApplication where UserID= ?UserID ", new { UserID }).ToList();
+                    response.applications = conn.GetList<MortgageLoanApplication>("where UserID = ?UserID", new { UserID }).ToList();
                     if (response.applications.Count > 0)
                     {
                         response.Status = true;
@@ -297,7 +261,9 @@ namespace HomeDirectAPI.Repositories
                             LoanStatusID = status.LoanStatusID,
                             PaymentStatuteID = paymentstatute.PaymentStatuteID,
                             PaymentStatute = paymentstatute.PaymentStatute,
-                            Score = 100M
+                            Score = 100M,
+                            ApplicationID = mortgage.ApplicationID,
+                            MortgageType = mortgage.MortgageType
                         };
                         var loanID = conn.Insert(loan);
                         decimal rate = decimal.Parse("100.00");

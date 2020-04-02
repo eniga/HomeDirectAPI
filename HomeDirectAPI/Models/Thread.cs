@@ -24,11 +24,11 @@ namespace HomeDirectAPI.Models
 
     public class ListThreadResponse : Response
     {
-        public List<Thread> threads { get; set; }
+        public List<Thread> data { get; set; }
     }
 
     public class ThreadResponse : Response
     {
-        public Thread thread { get; set; }
+        public Thread data { get; set; }
     }
 }

@@ -29,6 +29,8 @@ namespace HomeDirectAPI.Models
         public string LoanStatus { get; set; }
         public int LoanBuyerStatusID { get; set; }
         public string LoanBuyerStatus { get; set; }
+        public string ApplicationID { get; set; }
+        public string MortgageType { get; set; }
     }
 
     public class ListLoanResponse : Response

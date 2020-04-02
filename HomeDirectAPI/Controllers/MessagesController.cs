@@ -28,6 +28,13 @@ namespace HomeDirectAPI.Controllers
             return repo.List();
         }
 
+        // GET: api/values
+        [HttpGet("thread/{threadId}")]
+        public ListMessagesResponse ListByThreadID(string threadId)
+        {
+            return repo.ListByThreadID(threadId);
+        }
+
         [HttpGet("inbox/{userId}")]
         public ListMessagesResponse MyInbox(int userId)
         {

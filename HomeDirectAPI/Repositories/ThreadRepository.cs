@@ -1,18 +1,18 @@
-﻿using Dapper;
-using System;
-using Microsoft.Extensions.Configuration;
-using MySql.Data.MySqlClient;
-using HomeDirectAPI.Models;
+﻿using System;
 using System.Data;
 using System.Linq;
+using Dapper;
+using HomeDirectAPI.Models;
+using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace HomeDirectAPI.Repositories
 {
-    public class MessagesRepository
+    public class ThreadRepository
     {
         private string ConnectionString;
 
-        public MessagesRepository(IConfiguration configuration)
+        public ThreadRepository(IConfiguration configuration)
         {
             ConnectionString = configuration.GetConnectionString("DefaultConnection");
         }
@@ -23,15 +23,16 @@ namespace HomeDirectAPI.Repositories
             return new MySqlConnection(ConnectionString);
         }
 
-        public ListMessagesResponse List()
+        public ListThreadResponse List()
         {
-            ListMessagesResponse response = new ListMessagesResponse();
+            ListThreadResponse response = new ListThreadResponse();
             try
             {
                 using (IDbConnection conn = GetConnection())
                 {
-                    response.messages = conn.GetList<Messages>().ToList();
-                    if (response.messages.Count > 0)
+                    response.data = conn.GetList<Thread>().ToList();
+
+                    if (response.data.Count > 0)
                     {
                         response.Status = true;
                         response.Description = "Successful";
@@ -51,15 +52,16 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListMessagesResponse ListByThreadID(string ThreadID)
+        public ListThreadResponse ListByThreadId(string ThreadId)
         {
-            ListMessagesResponse response = new ListMessagesResponse();
+            ListThreadResponse response = new ListThreadResponse();
             try
             {
                 using (IDbConnection conn = GetConnection())
                 {
-                    response.messages = conn.GetList<Messages>("Where ThreadID = ?ThreadID", new { ThreadID }).ToList();
-                    if (response.messages.Count > 0)
+                    response.data = conn.GetList<Thread>("Where ThreadID = ?ThreadId", new { ThreadId }).ToList();
+
+                    if (response.data.Count > 0)
                     {
                         response.Status = true;
                         response.Description = "Successful";
@@ -79,15 +81,16 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListMessagesResponse MyInbox(int UserId)
+        public ListThreadResponse ListBySenderId(string SenderId)
         {
-            ListMessagesResponse response = new ListMessagesResponse();
+            ListThreadResponse response = new ListThreadResponse();
             try
             {
                 using (IDbConnection conn = GetConnection())
                 {
-                    response.messages = conn.GetList<Messages>("where RecipientID = ?UserId", new { UserId }).ToList();
-                    if (response.messages.Count > 0)
+                    response.data = conn.GetList<Thread>("Where SenderID = ?SenderId", new { SenderId }).ToList();
+
+                    if (response.data.Count > 0)
                     {
                         response.Status = true;
                         response.Description = "Successful";
@@ -107,15 +110,15 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListMessagesResponse MyOutbox(int UserId)
+        public ThreadResponse Read(int ID)
         {
-            ListMessagesResponse response = new ListMessagesResponse();
+            ThreadResponse response = new ThreadResponse();
             try
             {
                 using (IDbConnection conn = GetConnection())
                 {
-                    response.messages = conn.GetList<Messages>("where SenderID = ?UserId", new { UserId }).ToList();
-                    if (response.messages.Count > 0)
+                    response.data = conn.Get<Thread>(ID);
+                    if (response.data != null)
                     {
                         response.Status = true;
                         response.Description = "Successful";
@@ -135,35 +138,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public MessagesResponse Read(int MessageID)
-        {
-            MessagesResponse response = new MessagesResponse();
-            try
-            {
-                using (IDbConnection conn = GetConnection())
-                {
-                    response.message = conn.Get<Messages>(MessageID);
-                    if (response.message != null)
-                    {
-                        response.Status = true;
-                        response.Description = "Successful";
-                    }
-                    else
-                    {
-                        response.Status = false;
-                        response.Description = "No data";
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                response.Status = false;
-                response.Description = ex.Message;
-            }
-            return response;
-        }
-
-        public Response Add(Messages value)
+        public Response Add(Thread value)
         {
             Response response = new Response();
             try
@@ -183,7 +158,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Update(Messages value)
+        public Response Update(Thread value)
         {
             Response response = new Response();
             try
@@ -203,14 +178,14 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int MessageID)
+        public Response Delete(int ID)
         {
             Response response = new Response();
             try
             {
                 using (IDbConnection conn = GetConnection())
                 {
-                    conn.Delete<Messages>(MessageID);
+                    conn.Delete<Thread>(ID);
                     response.Status = true;
                     response.Description = "Successful";
                 }

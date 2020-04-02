@@ -15,6 +15,8 @@ namespace HomeDirectAPI.Models
         public string Statutes { get; set; }
         public decimal Rating { get; set; }
         public string Status { get; set; }
+        public string Comment { get; set; }
+        public int ProcessedBy { get; set; }
     }
 
     public class ListLoanMarketShareResponse : Response
