@@ -61,7 +61,44 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListingsResponse Read(int id)
+        public ListListingsResponse ListByDeveloperId(string developerId)
+        {
+            ListListingsResponse response = new ListListingsResponse();
+            try
+            {
+                using (IDbConnection conn = GetConnection())
+                {
+                    response.listings = conn.GetList<TEntity>().Where(x => x.user_id == developerId).ToList();
+                    if (response.listings.Count > 0)
+                    {
+                        int i = 0;
+                        while (i < response.listings.Count)
+                        {
+                            var id = response.listings[i].user_id;
+                            var user = conn.Get<User>(id);
+                            if (user != null)
+                                response.listings[i].user_name = user.FullName;
+                            i++;
+                        }
+                        response.Status = true;
+                        response.Description = "Successful";
+                    }
+                    else
+                    {
+                        response.Status = false;
+                        response.Description = "No data";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Description = ex.Message;
+            }
+            return response;
+        }
+
+        public ListingsResponse Read(long id)
         {
             ListingsResponse response = new ListingsResponse();
             try
@@ -139,7 +176,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response UpdateStatus(int id, Listings status)
+        public Response UpdateStatus(long id, Listings status)
         {
             Response response = new Response();
             try
@@ -168,7 +205,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int id)
+        public Response Delete(long id)
         {
             Response response = new Response();
             try

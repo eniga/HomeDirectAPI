@@ -58,7 +58,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public LoanMarketShareResponse Read(int ShareID)
+        public LoanMarketShareResponse Read(long ShareID)
         {
             LoanMarketShareResponse response = new LoanMarketShareResponse();
             try
@@ -126,7 +126,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int ShareID)
+        public Response Delete(long ShareID)
         {
             Response response = new Response();
             try

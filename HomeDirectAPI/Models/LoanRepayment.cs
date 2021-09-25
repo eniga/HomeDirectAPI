@@ -5,10 +5,10 @@ namespace HomeDirectAPI.Models
 {
     public class LoanRepayment
     {
-        public int RepaymentID { get; set; }
+        public long RepaymentID { get; set; }
         public string TitleHolder { get; set; }
         public decimal LoanAmount { get; set; }
-        public int Payments { get; set; }
+        public long Payments { get; set; }
         public string PaymentStatutes { get; set; }
         public string MortgageBank { get; set; }
         public string Timeline { get; set; }

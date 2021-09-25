@@ -8,10 +8,10 @@ namespace HomeDirectAPI.Models
     public class Bookmarks
     {
         [Key]
-        public int ID { get; set; }
+        public long ID { get; set; }
         public string PropertyID { get; set; }
-        public int UserID { get; set; }
-        public DateTime DateAdded { get; set; }
+        public long UserID { get; set; }
+        public DateTime? DateAdded { get; set; }
     }
 
     public class ListBookmarksResponse : Response

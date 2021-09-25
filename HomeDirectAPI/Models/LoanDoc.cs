@@ -8,9 +8,9 @@ namespace HomeDirectAPI.Models
     public class LoanDoc
     {
         [Key]
-        public int DocID { get; set; }
-        public int LoanID { get; set; }
-        public int MortgageId { get; set; }
+        public long DocID { get; set; }
+        public long LoanID { get; set; }
+        public long MortgageId { get; set; }
         public string DocName { get; set; }
         public string DocDesc { get; set; }
         public string DocLink { get; set; }

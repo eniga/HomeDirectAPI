@@ -57,7 +57,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public TransactionResponse Read(int TxnID)
+        public TransactionResponse Read(long TxnID)
         {
             TransactionResponse response = new TransactionResponse();
             try
@@ -125,7 +125,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int TxnID)
+        public Response Delete(long TxnID)
         {
             Response response = new Response();
             try

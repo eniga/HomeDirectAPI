@@ -36,20 +36,20 @@ namespace HomeDirectAPI.Controllers
         }
 
         [HttpGet("inbox/{userId}")]
-        public ListMessagesResponse MyInbox(int userId)
+        public ListMessagesResponse MyInbox(long userId)
         {
             return repo.MyInbox(userId);
         }
 
         [HttpGet("outbox/{userId}")]
-        public ListMessagesResponse MyOutbox(int userId)
+        public ListMessagesResponse MyOutbox(long userId)
         {
             return repo.MyOutbox(userId);
         }
 
         // GET api/values/5
         [HttpGet("{MessageID}")]
-        public MessagesResponse Get(int MessageID)
+        public MessagesResponse Get(long MessageID)
         {
             return repo.Read(MessageID);
         }
@@ -70,7 +70,7 @@ namespace HomeDirectAPI.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{MessageID}")]
-        public Response Delete(int MessageID)
+        public Response Delete(long MessageID)
         {
             return repo.Delete(MessageID);
         }

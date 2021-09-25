@@ -8,7 +8,7 @@ namespace HomeDirectAPI.Models
     public class Listings
     {
         [Key]
-        public int id { get; set; }
+        public long id { get; set; }
         public string user_id { get; set; }
         [NotMapped]
         public string user_name { get; set; }
@@ -33,7 +33,7 @@ namespace HomeDirectAPI.Models
         public string prop_category { get; set; }
         public string prop_avail { get; set; }
         public string status { get; set; }
-        public DateTime date { get; set; }
+        public DateTime? date { get; set; }
         public string dateadded { get; set; }
         public string prop_lga { get; set; }
         public decimal prop_discount { get; set; }

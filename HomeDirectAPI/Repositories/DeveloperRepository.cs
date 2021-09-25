@@ -53,7 +53,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public DeveloperResponse Read(int DeveloperId)
+        public DeveloperResponse Read(long DeveloperId)
         {
             DeveloperResponse response = new DeveloperResponse();
             try
@@ -187,7 +187,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int DeveloperId)
+        public Response Delete(long DeveloperId)
         {
             Response response = new Response();
             try

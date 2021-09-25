@@ -7,7 +7,7 @@ namespace HomeDirectAPI.Models
     public class MortgageJoint
     {
         [Key]
-        public int ID { get; set; }
+        public long ID { get; set; }
         public string UserID { get; set; }
         public string AppID { get; set; }
         public string PropertyID { get; set; }

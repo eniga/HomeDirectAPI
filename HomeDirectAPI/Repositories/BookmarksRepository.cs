@@ -52,7 +52,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public BookmarksResponse Read(int ID)
+        public BookmarksResponse Read(long ID)
         {
             BookmarksResponse response = new BookmarksResponse();
             try
@@ -120,7 +120,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int ID)
+        public Response Delete(long ID)
         {
             Response response = new Response();
             try

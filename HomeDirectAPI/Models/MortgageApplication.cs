@@ -10,9 +10,9 @@ namespace HomeDirectAPI.Models
 {
     public class MortgageApplication
     {
-        public int MortgageId { get; set; }
+        public long MortgageId { get; set; }
 
-        public int ProID { get; set; }
+        public long ProID { get; set; }
         public string ProName { get; set; }
         public string MortgageType { get; set; }
         public string AmountBorrowed { get; set; }
@@ -35,8 +35,8 @@ namespace HomeDirectAPI.Models
         public string AnnualIncome { get; set; }
         [ReadOnly(true)]
         public DateTime DateApplied { get; set; }
-        public DateTime DateApproved { get; set; }
-        //public int MyProperty { get; set; }
+        public DateTime? DateApproved { get; set; }
+        //public long MyProperty { get; set; }
 
     }
     public class ListMortgageApplicationResponse : Response

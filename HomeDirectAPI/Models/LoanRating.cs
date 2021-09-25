@@ -8,8 +8,8 @@ namespace HomeDirectAPI.Models
     public class LoanRating
     {
         [Key]
-        public int RatingID { get; set; }
-        public int LoanID { get; set; }
+        public long RatingID { get; set; }
+        public long LoanID { get; set; }
         public decimal Rating { get; set; }
         public string RatingDesc { get; set; }
     }

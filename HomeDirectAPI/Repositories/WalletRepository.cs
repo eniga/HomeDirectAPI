@@ -52,7 +52,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public WalletResponse Read(int BankId)
+        public WalletResponse Read(long BankId)
         {
             WalletResponse response = new WalletResponse();
             try
@@ -120,7 +120,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int BankId)
+        public Response Delete(long BankId)
         {
             Response response = new Response();
             try

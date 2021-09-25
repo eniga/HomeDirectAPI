@@ -8,7 +8,7 @@ namespace HomeDirectAPI.Models
     public class Role
     {
         [Key]
-        public int RoleID { get; set; }
+        public long RoleID { get; set; }
         public string UserCategory { get; set; }
         public string UserType { get; set; }
         public string RoleName { get; set; }

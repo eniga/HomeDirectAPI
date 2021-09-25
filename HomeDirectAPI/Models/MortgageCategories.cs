@@ -10,7 +10,7 @@ namespace HomeDirectAPI.Models
     public class MortgageCategories
     {
         [Key]
-        public int CategoryID { get; set; }
+        public long CategoryID { get; set; }
         public string CategoryName { get; set; }
     }
 }

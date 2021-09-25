@@ -9,7 +9,7 @@ namespace HomeDirectAPI.Models
     public class MortgageLoanViewModel
     {
        // [Key]
-        public int LoanDocsID { get; set; }
+        public long LoanDocsID { get; set; }
         public string MortgageLoanID { get; set; }
 
         public string DocsName { get; set; }

@@ -8,11 +8,11 @@ namespace HomeDirectAPI.Models
     public class Buyer
     {
         [Key]
-        public int BuyerID { get; set; }
-        public int UserID { get; set; }
+        public long BuyerID { get; set; }
+        public long UserID { get; set; }
         public string BuyerType { get; set; }
         public string Details { get; set; }
-        public DateTime RegDate { get; set; }
+        public DateTime? RegDate { get; set; }
     }
 
     public class ListBuyerResponse : Response

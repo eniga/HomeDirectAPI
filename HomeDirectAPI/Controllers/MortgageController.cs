@@ -33,34 +33,34 @@ namespace HomeDirectAPI.Controllers
         }
 
         [HttpGet("UserID")]
-        public ListMortgageLoanResponse GetLoanByUserID(int userID)
+        public ListMortgageLoanResponse GetLoanByUserID(long userID)
         {
 
             return repo.GetLoanByUserID(userID);
         }
 
         [HttpGet("Loan/Count")]
-        public int GetCount(string email)
+        public long GetCount(string email)
         {
 
             return repo.GetLoanByEmail(email).applications.Count;
         }
         // GET api/values/5
         [HttpGet("{MortgageLoanID}")]
-        public MortgageLoanResponse GetByLoanID(int MortgageLoanID)
+        public MortgageLoanResponse GetByLoanID(long MortgageLoanID)
         {
             return repo.Read(MortgageLoanID);
         }
 
         // POST api/values
         [HttpPost]
-        public MortgageResponse AddMortgage([FromBody]MortgageLoanApplication value)
+        public MortgageResponse AddMortgage([FromBody] MortgageLoanApplication value)
         {
             return repo.Add(value);
         }
 
         [HttpPost("UpdateStatus")]
-        public Response UpdateMortgageStatus([FromBody]UpdateLoanStatus value)
+        public Response UpdateMortgageStatus([FromBody] UpdateLoanStatus value)
         {
             return repo.UpdateMortgageStatus(value);
         }
@@ -68,14 +68,14 @@ namespace HomeDirectAPI.Controllers
 
         // PUT api/values/5
         [HttpPut]
-        public Response UpdateMortgage([FromBody]MortgageLoanApplication value)
+        public Response UpdateMortgage([FromBody] MortgageLoanApplication value)
         {
             return repo.Update(value);
         }
 
         // DELETE api/values/5
         [HttpDelete("{MortgageLoanID}")]
-        public Response DeleteMortgage(int MortgageLoanID)
+        public Response DeleteMortgage(long MortgageLoanID)
         {
             return repo.Delete(MortgageLoanID);
         }

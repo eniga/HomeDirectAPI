@@ -44,7 +44,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public MortgageDashboardDetails Get(int Year)
+        public MortgageDashboardDetails Get(long Year)
         {
             MortgageDashboardDetails response = new MortgageDashboardDetails();
             try

@@ -30,7 +30,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET api/values/5
         [HttpGet("{TxnID}")]
-        public TransactionResponse Get(int TxnID)
+        public TransactionResponse Get(long TxnID)
         {
             return repo.Read(TxnID);
         }
@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{TxnID}")]
-        public Response Delete(int TxnID)
+        public Response Delete(long TxnID)
         {
             return repo.Delete(TxnID);
         }

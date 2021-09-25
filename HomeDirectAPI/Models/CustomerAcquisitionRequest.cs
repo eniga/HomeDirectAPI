@@ -34,7 +34,7 @@ namespace HomeDirectAPI.Models
         public string BBAN1 { get; set; }
         public string BBAN2 { get; set; }
         public string IBAN { get; set; }
-        public int ConditionCount { get; set; }
+        public long ConditionCount { get; set; }
         public List<Condition> Conditions { get; set; }
     }
 
@@ -107,46 +107,46 @@ namespace HomeDirectAPI.Models
         public string Spare_58_Date { get; set; }
         public string Spare_59_Date { get; set; }
         public string Spare_60_Date { get; set; }
-        public int Spare_61_Numeric { get; set; }
-        public int Spare_62_Numeric { get; set; }
-        public int Spare_63_Numeric { get; set; }
-        public int Spare_64_Numeric { get; set; }
-        public int Spare_65_Numeric { get; set; }
-        public int Spare_66_Numeric { get; set; }
-        public int Spare_67_Numeric { get; set; }
-        public int Spare_68_Numeric { get; set; }
-        public int Spare_69_Numeric { get; set; }
-        public int Spare_70_Numeric { get; set; }
-        public int Spare_71_Numeric { get; set; }
-        public int Spare_72_Numeric { get; set; }
-        public int Spare_73_Numeric { get; set; }
-        public int Spare_74_Numeric { get; set; }
-        public int Spare_75_Numeric { get; set; }
-        public int Spare_76_Numeric { get; set; }
-        public int Spare_77_Numeric { get; set; }
-        public int Spare_78_Numeric { get; set; }
-        public int Spare_79_Numeric { get; set; }
-        public int Spare_80_Numeric { get; set; }
-        public int Spare_81_Decimal { get; set; }
-        public int Spare_82_Decimal { get; set; }
-        public int Spare_83_Decimal { get; set; }
-        public int Spare_84_Decimal { get; set; }
-        public int Spare_85_Decimal { get; set; }
-        public int Spare_86_Decimal { get; set; }
-        public int Spare_87_Decimal { get; set; }
-        public int Spare_88_Decimal { get; set; }
-        public int Spare_89_Decimal { get; set; }
-        public int Spare_90_Decimal { get; set; }
-        public int Spare_91_Decimal { get; set; }
-        public int Spare_92_Decimal { get; set; }
-        public int Spare_93_Decimal { get; set; }
-        public int Spare_94_Decimal { get; set; }
-        public int Spare_95_Decimal { get; set; }
-        public int Spare_96_Decimal { get; set; }
-        public int Spare_97_Decimal { get; set; }
-        public int Spare_98_Decimal { get; set; }
-        public int Spare_99_Decimal { get; set; }
-        public int Spare_100_Decimal { get; set; }
+        public long Spare_61_Numeric { get; set; }
+        public long Spare_62_Numeric { get; set; }
+        public long Spare_63_Numeric { get; set; }
+        public long Spare_64_Numeric { get; set; }
+        public long Spare_65_Numeric { get; set; }
+        public long Spare_66_Numeric { get; set; }
+        public long Spare_67_Numeric { get; set; }
+        public long Spare_68_Numeric { get; set; }
+        public long Spare_69_Numeric { get; set; }
+        public long Spare_70_Numeric { get; set; }
+        public long Spare_71_Numeric { get; set; }
+        public long Spare_72_Numeric { get; set; }
+        public long Spare_73_Numeric { get; set; }
+        public long Spare_74_Numeric { get; set; }
+        public long Spare_75_Numeric { get; set; }
+        public long Spare_76_Numeric { get; set; }
+        public long Spare_77_Numeric { get; set; }
+        public long Spare_78_Numeric { get; set; }
+        public long Spare_79_Numeric { get; set; }
+        public long Spare_80_Numeric { get; set; }
+        public long Spare_81_Decimal { get; set; }
+        public long Spare_82_Decimal { get; set; }
+        public long Spare_83_Decimal { get; set; }
+        public long Spare_84_Decimal { get; set; }
+        public long Spare_85_Decimal { get; set; }
+        public long Spare_86_Decimal { get; set; }
+        public long Spare_87_Decimal { get; set; }
+        public long Spare_88_Decimal { get; set; }
+        public long Spare_89_Decimal { get; set; }
+        public long Spare_90_Decimal { get; set; }
+        public long Spare_91_Decimal { get; set; }
+        public long Spare_92_Decimal { get; set; }
+        public long Spare_93_Decimal { get; set; }
+        public long Spare_94_Decimal { get; set; }
+        public long Spare_95_Decimal { get; set; }
+        public long Spare_96_Decimal { get; set; }
+        public long Spare_97_Decimal { get; set; }
+        public long Spare_98_Decimal { get; set; }
+        public long Spare_99_Decimal { get; set; }
+        public long Spare_100_Decimal { get; set; }
     }
 
     public class BusinessEntity
@@ -160,19 +160,19 @@ namespace HomeDirectAPI.Models
         public string OwnerName { get; set; }
         public string TelephoneNumber { get; set; }
         public string FaxNumber { get; set; }
-        public int CompanyTurnover { get; set; }
+        public long CompanyTurnover { get; set; }
         public string SICCode { get; set; }
         public string VATNumber { get; set; }
-        public int NumberOfEmployees { get; set; }
-        public int NumberOfDirectors { get; set; }
-        public int NumberOfPartnersAndOrShareholders { get; set; }
+        public long NumberOfEmployees { get; set; }
+        public long NumberOfDirectors { get; set; }
+        public long NumberOfPartnersAndOrShareholders { get; set; }
         public string DateEstablished { get; set; }
         public string DateOfIncorporation { get; set; }
         public string DateOfFiscalYearEnd { get; set; }
         public string OwnershipStartDate { get; set; }
         public string OwnershipEndDate { get; set; }
         public LengthOwnership LengthOwnership { get; set; }
-        public int NumberOfPremise { get; set; }
+        public long NumberOfPremise { get; set; }
         public BusinessAddress BusinessAddress { get; set; }
         public BusinessBankDetails BusinessBankDetails { get; set; }
         public BusinessContact BusinessContact { get; set; }
@@ -192,57 +192,57 @@ namespace HomeDirectAPI.Models
 
     public class MortgageSpecific
     {
-        public int PurchasePrice { get; set; }
-        public int PropertyValue { get; set; }
-        public int InterestOnlyAmount { get; set; }
-        public int MonthlyAmount { get; set; }
-        public int MonthlyRentalIncome { get; set; }
-        public int InterestRate { get; set; }
-        public int LoanToValue { get; set; }
+        public long PurchasePrice { get; set; }
+        public long PropertyValue { get; set; }
+        public long InterestOnlyAmount { get; set; }
+        public long MonthlyAmount { get; set; }
+        public long MonthlyRentalIncome { get; set; }
+        public long InterestRate { get; set; }
+        public long LoanToValue { get; set; }
     }
 
     public class CurrentAccountSpecific
     {
         public string OverdraftRequested { get; set; }
-        public int OverdraftLimit { get; set; }
+        public long OverdraftLimit { get; set; }
     }
 
     public class Addon
     {
         public string AddonServiceCode { get; set; }
         public string AddonServiceName { get; set; }
-        public int AddonServiceMonthlyReoccurringCharge { get; set; }
+        public long AddonServiceMonthlyReoccurringCharge { get; set; }
     }
 
     public class Basket
     {
         public string DeviceCode { get; set; }
         public string DeviceName { get; set; }
-        public int DeviceValue { get; set; }
-        public int DeviceOneOffCharge { get; set; }
-        public int DeviceMonthlyReoccurringCharge { get; set; }
+        public long DeviceValue { get; set; }
+        public long DeviceOneOffCharge { get; set; }
+        public long DeviceMonthlyReoccurringCharge { get; set; }
         public string TariffCode { get; set; }
         public string TariffName { get; set; }
-        public int TariffMonthlyReoccurringCharge { get; set; }
+        public long TariffMonthlyReoccurringCharge { get; set; }
         public string FinanceCode { get; set; }
         public string FinanceName { get; set; }
-        public int FinanceValue { get; set; }
-        public int FinanceOneOffCharge { get; set; }
-        public int FinanceMonthlyReoccurringCharge { get; set; }
-        public int FinanceAPR { get; set; }
-        public int FinanceTerm { get; set; }
+        public long FinanceValue { get; set; }
+        public long FinanceOneOffCharge { get; set; }
+        public long FinanceMonthlyReoccurringCharge { get; set; }
+        public long FinanceAPR { get; set; }
+        public long FinanceTerm { get; set; }
         public List<Addon> Addons { get; set; }
-        public int ContractTermInMonths { get; set; }
+        public long ContractTermInMonths { get; set; }
         public string RiskGrade { get; set; }
-        public int Quantity { get; set; }
+        public long Quantity { get; set; }
     }
 
     public class TelecommunicationsSpecific
     {
         public string IsPort { get; set; }
         public string IsTradeIn { get; set; }
-        public int TradeInValue { get; set; }
-        public int UpfrontPaymentAmount { get; set; }
+        public long TradeInValue { get; set; }
+        public long UpfrontPaymentAmount { get; set; }
         public string WholeBasketRiskGrade { get; set; }
         public List<Basket> Basket { get; set; }
     }
@@ -253,9 +253,9 @@ namespace HomeDirectAPI.Models
         public string PaymentMethod { get; set; }
         public string BillingFrequency { get; set; }
         public string ProductType { get; set; }
-        public int EstimatedAnnualSpend { get; set; }
-        public int EstimatedAnnualConsumption { get; set; }
-        public int EstimatedGrossMargin { get; set; }
+        public long EstimatedAnnualSpend { get; set; }
+        public long EstimatedAnnualConsumption { get; set; }
+        public long EstimatedGrossMargin { get; set; }
     }
 
     public class Gas
@@ -264,9 +264,9 @@ namespace HomeDirectAPI.Models
         public string PaymentMethod { get; set; }
         public string BillingFrequency { get; set; }
         public string ProductType { get; set; }
-        public int EstimatedAnnualSpend { get; set; }
-        public int EstimatedAnnualConsumption { get; set; }
-        public int EstimatedGrossMargin { get; set; }
+        public long EstimatedAnnualSpend { get; set; }
+        public long EstimatedAnnualConsumption { get; set; }
+        public long EstimatedGrossMargin { get; set; }
     }
 
     public class UtilitiesSpecific
@@ -286,7 +286,7 @@ namespace HomeDirectAPI.Models
         public string Deposit { get; set; }
         public string TenancyType { get; set; }
         public string TenancyCategory { get; set; }
-        public int TenancyTermInMonths { get; set; }
+        public long TenancyTermInMonths { get; set; }
         public string PaymentFrequency { get; set; }
         public string PreviousBehaviourIssue { get; set; }
         public string HasWeaponsFlag { get; set; }
@@ -300,19 +300,19 @@ namespace HomeDirectAPI.Models
 
     public class Vehicle
     {
-        public int Price { get; set; }
-        public int DepositAmount { get; set; }
-        public int BalloonPaymentAmount { get; set; }
-        public int RepaymentAmount { get; set; }
+        public long Price { get; set; }
+        public long DepositAmount { get; set; }
+        public long BalloonPaymentAmount { get; set; }
+        public long RepaymentAmount { get; set; }
         public string RepaymentFrequency { get; set; }
-        public int RepaymentTermInMonths { get; set; }
+        public long RepaymentTermInMonths { get; set; }
         public string InitialRepaymentDate { get; set; }
         public string DeliveryDate { get; set; }
         public string ProductCodeOrId { get; set; }
         public string Condition { get; set; }
         public string Registration { get; set; }
-        public int AgeInYears { get; set; }
-        public int Mileage { get; set; }
+        public long AgeInYears { get; set; }
+        public long Mileage { get; set; }
         public string Class { get; set; }
         public string IsMaintained { get; set; }
         public string DealerCode { get; set; }
@@ -321,22 +321,22 @@ namespace HomeDirectAPI.Models
 
     public class AutomotiveSpecific
     {
-        public int TotalNumberOfVehicles { get; set; }
-        public int TotalExposure { get; set; }
+        public long TotalNumberOfVehicles { get; set; }
+        public long TotalExposure { get; set; }
         public List<Vehicle> Vehicles { get; set; }
     }
 
     public class Application
     {
-        public int Amount { get; set; }
-        public int Term { get; set; }
+        public long Amount { get; set; }
+        public long Term { get; set; }
         public string Purpose { get; set; }
-        public int PropertyValue { get; set; }
+        public long PropertyValue { get; set; }
         public string MortgageType { get; set; }
-        public int MonthlyAmount { get; set; }
-        public int MortgageBalance { get; set; }
-        public int LimitApplied { get; set; }
-        public int LimitGiven { get; set; }
+        public long MonthlyAmount { get; set; }
+        public long MortgageBalance { get; set; }
+        public long LimitApplied { get; set; }
+        public long LimitGiven { get; set; }
         public string ApplicationChannel { get; set; }
         public string AuthenticationType { get; set; }
         public string ManualAuthenticationRequired { get; set; }
@@ -345,7 +345,7 @@ namespace HomeDirectAPI.Models
         public string ProductCode { get; set; }
         public string ProductRequiredBy { get; set; }
         public string DateInMonthForRepayments { get; set; }
-        public int TargetAPR { get; set; }
+        public long TargetAPR { get; set; }
         public MortgageSpecific MortgageSpecific { get; set; }
         public CurrentAccountSpecific CurrentAccountSpecific { get; set; }
         public TelecommunicationsSpecific TelecommunicationsSpecific { get; set; }
@@ -408,7 +408,7 @@ namespace HomeDirectAPI.Models
         public string SharedLetterbox { get; set; }
         public Location Location { get; set; }
         public string TenancyType { get; set; }
-        public int NumberOfBedrooms { get; set; }
+        public long NumberOfBedrooms { get; set; }
         public string IsTemporaryAccommodation { get; set; }
         public string ReasonForLeaving { get; set; }
     }
@@ -467,73 +467,73 @@ namespace HomeDirectAPI.Models
 
     public class BreakdownOfMonthlyIncome
     {
-        public int StatutorySickPay { get; set; }
-        public int StatePension { get; set; }
-        public int WarPension { get; set; }
-        public int PrivatePension { get; set; }
-        public int SavingsandInvestmentIncome { get; set; }
-        public int ChildMaintenance { get; set; }
-        public int RentalIncome { get; set; }
-        public int SpousalMaintenance { get; set; }
-        public int UniversalCredit { get; set; }
-        public int WorkingTaxCredit { get; set; }
-        public int ChildTaxCredit { get; set; }
-        public int HousingBenefit { get; set; }
-        public int CouncilTaxSupport { get; set; }
-        public int PensionCredit { get; set; }
-        public int JobSeekersAllowance { get; set; }
-        public int EmploymentandSupportAllowance { get; set; }
-        public int IncomeSupport { get; set; }
-        public int AttendanceAllowance { get; set; }
-        public int DLACare { get; set; }
-        public int PIPDailyLiving { get; set; }
-        public int DLAMobility { get; set; }
-        public int PIPMobility { get; set; }
-        public int IncapacityBenefit { get; set; }
-        public int IndustrialInjuriesBenefit { get; set; }
-        public int SevereDisablementBenefit { get; set; }
-        public int ChildBenefit { get; set; }
-        public int CarersAllowance { get; set; }
-        public int MaternityAllowance { get; set; }
-        public int WidowedParentsAllowance { get; set; }
-        public int BereavementAllowance { get; set; }
-        public int Other { get; set; }
-        public int TotalEarningsOtherMembersOfHousehold { get; set; }
+        public long StatutorySickPay { get; set; }
+        public long StatePension { get; set; }
+        public long WarPension { get; set; }
+        public long PrivatePension { get; set; }
+        public long SavingsandInvestmentIncome { get; set; }
+        public long ChildMaintenance { get; set; }
+        public long RentalIncome { get; set; }
+        public long SpousalMaintenance { get; set; }
+        public long UniversalCredit { get; set; }
+        public long WorkingTaxCredit { get; set; }
+        public long ChildTaxCredit { get; set; }
+        public long HousingBenefit { get; set; }
+        public long CouncilTaxSupport { get; set; }
+        public long PensionCredit { get; set; }
+        public long JobSeekersAllowance { get; set; }
+        public long EmploymentandSupportAllowance { get; set; }
+        public long IncomeSupport { get; set; }
+        public long AttendanceAllowance { get; set; }
+        public long DLACare { get; set; }
+        public long PIPDailyLiving { get; set; }
+        public long DLAMobility { get; set; }
+        public long PIPMobility { get; set; }
+        public long IncapacityBenefit { get; set; }
+        public long IndustrialInjuriesBenefit { get; set; }
+        public long SevereDisablementBenefit { get; set; }
+        public long ChildBenefit { get; set; }
+        public long CarersAllowance { get; set; }
+        public long MaternityAllowance { get; set; }
+        public long WidowedParentsAllowance { get; set; }
+        public long BereavementAllowance { get; set; }
+        public long Other { get; set; }
+        public long TotalEarningsOtherMembersOfHousehold { get; set; }
     }
 
     public class DetailedEssentialMonthlyFixedCosts
     {
-        public int Rent { get; set; }
-        public int Groceries { get; set; }
-        public int Gas { get; set; }
-        public int Electric { get; set; }
-        public int Water { get; set; }
-        public int Phone { get; set; }
-        public int TravelCosts { get; set; }
-        public int Insurances { get; set; }
-        public int ChildMaintenance { get; set; }
-        public int ChildCare { get; set; }
-        public int TotalEssentialFixedCosts { get; set; }
+        public long Rent { get; set; }
+        public long Groceries { get; set; }
+        public long Gas { get; set; }
+        public long Electric { get; set; }
+        public long Water { get; set; }
+        public long Phone { get; set; }
+        public long TravelCosts { get; set; }
+        public long Insurances { get; set; }
+        public long ChildMaintenance { get; set; }
+        public long ChildCare { get; set; }
+        public long TotalEssentialFixedCosts { get; set; }
     }
 
     public class DetailedNonEssentialMonthlyFixedCosts
     {
-        public int TV { get; set; }
-        public int Broadband { get; set; }
-        public int Clothes { get; set; }
-        public int HouseholdGoods { get; set; }
-        public int LeisureCosts { get; set; }
-        public int PersonalGoods { get; set; }
-        public int Medical { get; set; }
-        public int Memberships { get; set; }
-        public int Pets { get; set; }
-        public int Holidays { get; set; }
+        public long TV { get; set; }
+        public long Broadband { get; set; }
+        public long Clothes { get; set; }
+        public long HouseholdGoods { get; set; }
+        public long LeisureCosts { get; set; }
+        public long PersonalGoods { get; set; }
+        public long Medical { get; set; }
+        public long Memberships { get; set; }
+        public long Pets { get; set; }
+        public long Holidays { get; set; }
     }
 
     public class Expenditure
     {
         public string Description { get; set; }
-        public int Amount { get; set; }
+        public long Amount { get; set; }
     }
 
     public class Expenditures
@@ -543,18 +543,18 @@ namespace HomeDirectAPI.Models
 
     public class FinancialDetails
     {
-        public int GrossAnnualIncome { get; set; }
-        public int AdditionalAnnualIncome { get; set; }
-        public int NetMonthlyIncome { get; set; }
+        public long GrossAnnualIncome { get; set; }
+        public long AdditionalAnnualIncome { get; set; }
+        public long NetMonthlyIncome { get; set; }
         public BreakdownOfMonthlyIncome BreakdownOfMonthlyIncome { get; set; }
-        public int TotalValueOfSavings { get; set; }
-        public int MonthlyMortgageAmount { get; set; }
-        public int ShareOfMonthlyMortgageAmount { get; set; }
-        public int MonthlyCouncilTax { get; set; }
-        public int ShareOfMonthlyCouncilTax { get; set; }
-        public int MonthlyLoanRepayments { get; set; }
-        public int RegularMonthlyOutgoings { get; set; }
-        public int TotalValueOfPropertyOwned { get; set; }
+        public long TotalValueOfSavings { get; set; }
+        public long MonthlyMortgageAmount { get; set; }
+        public long ShareOfMonthlyMortgageAmount { get; set; }
+        public long MonthlyCouncilTax { get; set; }
+        public long ShareOfMonthlyCouncilTax { get; set; }
+        public long MonthlyLoanRepayments { get; set; }
+        public long RegularMonthlyOutgoings { get; set; }
+        public long TotalValueOfPropertyOwned { get; set; }
         public DetailedEssentialMonthlyFixedCosts DetailedEssentialMonthlyFixedCosts { get; set; }
         public DetailedNonEssentialMonthlyFixedCosts DetailedNonEssentialMonthlyFixedCosts { get; set; }
         public Expenditures Expenditures { get; set; }
@@ -565,44 +565,44 @@ namespace HomeDirectAPI.Models
         public string TimeHeldMM { get; set; }
         public string TimeHeldYY { get; set; }
         public string isBeingPaidOffWithThisLoan { get; set; }
-        public int CurrentBalance { get; set; }
-        public int CreditLimit { get; set; }
+        public long CurrentBalance { get; set; }
+        public long CreditLimit { get; set; }
         public string IsPrimaryCardHolder { get; set; }
     }
 
     public class Loan
     {
-        public int AmountOutstanding { get; set; }
-        public int MonthlyPayment { get; set; }
+        public long AmountOutstanding { get; set; }
+        public long MonthlyPayment { get; set; }
         public string isBeingPaidOffWithThisLoan { get; set; }
     }
 
     public class Account
     {
-        public int ClearedBalance { get; set; }
+        public long ClearedBalance { get; set; }
         public string DateOpened { get; set; }
-        public int OverdraftLimit { get; set; }
+        public long OverdraftLimit { get; set; }
     }
 
     public class Mortgage
     {
         public string IsBeingPaidOffWithThisLoan { get; set; }
-        public int CurrentBalance { get; set; }
-        public int MonthlyRepayment { get; set; }
-        public int BalanceAmountContinuing { get; set; }
-        public int InterestOnlyAmount { get; set; }
+        public long CurrentBalance { get; set; }
+        public long MonthlyRepayment { get; set; }
+        public long BalanceAmountContinuing { get; set; }
+        public long InterestOnlyAmount { get; set; }
         public string IsPropertyLet { get; set; }
         public string TenancyAgreementInPlace { get; set; }
-        public int MonthlyRentalIncome { get; set; }
-        public int EstimatedPropertyValue { get; set; }
+        public long MonthlyRentalIncome { get; set; }
+        public long EstimatedPropertyValue { get; set; }
     }
 
     public class Asset
     {
         public string PledgedToExistingLoan { get; set; }
         public string PledgedForThisApplication { get; set; }
-        public int PledgedAmount { get; set; }
-        public int ValueOfAsset { get; set; }
+        public long PledgedAmount { get; set; }
+        public long ValueOfAsset { get; set; }
     }
 
     public class ExistingAccountInformation
@@ -616,59 +616,59 @@ namespace HomeDirectAPI.Models
 
     public class MonthlyExpenses
     {
-        public int Rent { get; set; }
-        public int Mortgage { get; set; }
-        public int GroundRent { get; set; }
-        public int ServiceCharge { get; set; }
-        public int CouncilTax { get; set; }
-        public int Gas { get; set; }
-        public int Electricity { get; set; }
-        public int Water { get; set; }
-        public int HomePhone { get; set; }
-        public int Internet { get; set; }
-        public int TVLicence { get; set; }
-        public int SkyDigital { get; set; }
-        public int MobilePhone { get; set; }
-        public int BuildingandContentsInsurance { get; set; }
-        public int LifeInsurance { get; set; }
-        public int MobileInsurance { get; set; }
-        public int MedicalDentalInsurance { get; set; }
-        public int OtherInsurance { get; set; }
-        public int ChildcareCosts { get; set; }
-        public int BusTrainFares { get; set; }
-        public int CarExpenses { get; set; }
-        public int FoodDrinkGroceries { get; set; }
-        public int PetCosts { get; set; }
-        public int GymandOtherSubscriptionFees { get; set; }
-        public int EntertainmentHolidays { get; set; }
-        public int ClothesandCosmetics { get; set; }
-        public int AlcoholSmokingGambling { get; set; }
-        public int RegularSavings { get; set; }
-        public int PensionContributions { get; set; }
-        public int LoanPayments { get; set; }
-        public int CreditCardPayments { get; set; }
-        public int StoreCardPayments { get; set; }
-        public int CataloguePayments { get; set; }
-        public int HPAgreements { get; set; }
-        public int Overdraft { get; set; }
-        public int CourtFines { get; set; }
-        public int Prescriptions { get; set; }
-        public int OtherCosts { get; set; }
+        public long Rent { get; set; }
+        public long Mortgage { get; set; }
+        public long GroundRent { get; set; }
+        public long ServiceCharge { get; set; }
+        public long CouncilTax { get; set; }
+        public long Gas { get; set; }
+        public long Electricity { get; set; }
+        public long Water { get; set; }
+        public long HomePhone { get; set; }
+        public long Internet { get; set; }
+        public long TVLicence { get; set; }
+        public long SkyDigital { get; set; }
+        public long MobilePhone { get; set; }
+        public long BuildingandContentsInsurance { get; set; }
+        public long LifeInsurance { get; set; }
+        public long MobileInsurance { get; set; }
+        public long MedicalDentalInsurance { get; set; }
+        public long OtherInsurance { get; set; }
+        public long ChildcareCosts { get; set; }
+        public long BusTrainFares { get; set; }
+        public long CarExpenses { get; set; }
+        public long FoodDrinkGroceries { get; set; }
+        public long PetCosts { get; set; }
+        public long GymandOtherSubscriptionFees { get; set; }
+        public long EntertainmentHolidays { get; set; }
+        public long ClothesandCosmetics { get; set; }
+        public long AlcoholSmokingGambling { get; set; }
+        public long RegularSavings { get; set; }
+        public long PensionContributions { get; set; }
+        public long LoanPayments { get; set; }
+        public long CreditCardPayments { get; set; }
+        public long StoreCardPayments { get; set; }
+        public long CataloguePayments { get; set; }
+        public long HPAgreements { get; set; }
+        public long Overdraft { get; set; }
+        public long CourtFines { get; set; }
+        public long Prescriptions { get; set; }
+        public long OtherCosts { get; set; }
     }
 
     public class MonthlyArrears
     {
-        public int Rent { get; set; }
-        public int Mortgage { get; set; }
-        public int CouncilTax { get; set; }
-        public int CourtFines { get; set; }
-        public int CourtOrders { get; set; }
-        public int Gas { get; set; }
-        public int Electricity { get; set; }
-        public int Water { get; set; }
-        public int Phone { get; set; }
-        public int AllCreditArrears { get; set; }
-        public int OtherMonthlyArrears { get; set; }
+        public long Rent { get; set; }
+        public long Mortgage { get; set; }
+        public long CouncilTax { get; set; }
+        public long CourtFines { get; set; }
+        public long CourtOrders { get; set; }
+        public long Gas { get; set; }
+        public long Electricity { get; set; }
+        public long Water { get; set; }
+        public long Phone { get; set; }
+        public long AllCreditArrears { get; set; }
+        public long OtherMonthlyArrears { get; set; }
     }
 
     public class WorkTelephone
@@ -806,64 +806,64 @@ namespace HomeDirectAPI.Models
     public class FinancialDisclosure
     {
         public string FinancialAccountsAvailable { get; set; }
-        public int NumberofYearsFinancials { get; set; }
+        public long NumberofYearsFinancials { get; set; }
         public string DateOfAccounts { get; set; }
-        public int TotalFixedAssets { get; set; }
-        public int TangibleAssets { get; set; }
-        public int IntangibleAssets { get; set; }
-        public int OtherLongTermAssets { get; set; }
-        public int TotalCurrentAssets { get; set; }
-        public int Stocks { get; set; }
-        public int Debtors { get; set; }
-        public int CashInBankAndCashInHand { get; set; }
-        public int LongTermLiabilities { get; set; }
-        public int TotalCurrentLiabilities { get; set; }
-        public int CreditorsAndSuppliers { get; set; }
-        public int LoansBank { get; set; }
-        public int WorkingCapital { get; set; }
-        public int TotalAssets { get; set; }
-        public int Creditors { get; set; }
-        public int CapitalEmployed { get; set; }
-        public int TotalNetAssets { get; set; }
-        public int ShareholdersFunds { get; set; }
-        public int NetWorth { get; set; }
-        public int ProfitAndLossCurrentDate { get; set; }
-        public int Turnover { get; set; }
-        public int TotalCostOfSales { get; set; }
-        public int Material { get; set; }
-        public int Wages { get; set; }
-        public int TotalExpenses { get; set; }
-        public int RentAndLeaseCost { get; set; }
-        public int Insurance { get; set; }
-        public int ProvisionsAndWriteOff { get; set; }
-        public int Salaries { get; set; }
-        public int Depreciation { get; set; }
-        public int InterestCharges { get; set; }
-        public int Motor { get; set; }
-        public int Other { get; set; }
-        public int GrossProfit { get; set; }
-        public int PreTaxProfitAndLoss { get; set; }
-        public int RetainedProiftAndLoss { get; set; }
-        public int Cashflow { get; set; }
-        public int Servicibility { get; set; }
-        public int CurrentRatio { get; set; }
-        public int AcidTestRatio { get; set; }
-        public int StockTurnoverRatio { get; set; }
-        public int DebtorsTurnoverRatio { get; set; }
-        public int CreditorsTurnoverRatio { get; set; }
-        public int DebtorsAndCreditorsRatio { get; set; }
-        public int WorkingCapitalTurnoverRatio { get; set; }
-        public int PreTaxNetProfitMargin { get; set; }
-        public int GrossProfitMargin { get; set; }
-        public int DebtGearingRatio { get; set; }
-        public int EquityGearingRatio { get; set; }
-        public int ReturnonTotalAssets { get; set; }
-        public int ReturnonCapitalEmployment { get; set; }
-        public int InterestCover { get; set; }
-        public int SalestoAssets { get; set; }
-        public int CostIncomeRatio { get; set; }
-        public int DebttoEquityRatio { get; set; }
-        public int OperatingCashflowRatio { get; set; }
+        public long TotalFixedAssets { get; set; }
+        public long TangibleAssets { get; set; }
+        public long IntangibleAssets { get; set; }
+        public long OtherLongTermAssets { get; set; }
+        public long TotalCurrentAssets { get; set; }
+        public long Stocks { get; set; }
+        public long Debtors { get; set; }
+        public long CashInBankAndCashInHand { get; set; }
+        public long LongTermLiabilities { get; set; }
+        public long TotalCurrentLiabilities { get; set; }
+        public long CreditorsAndSuppliers { get; set; }
+        public long LoansBank { get; set; }
+        public long WorkingCapital { get; set; }
+        public long TotalAssets { get; set; }
+        public long Creditors { get; set; }
+        public long CapitalEmployed { get; set; }
+        public long TotalNetAssets { get; set; }
+        public long ShareholdersFunds { get; set; }
+        public long NetWorth { get; set; }
+        public long ProfitAndLossCurrentDate { get; set; }
+        public long Turnover { get; set; }
+        public long TotalCostOfSales { get; set; }
+        public long Material { get; set; }
+        public long Wages { get; set; }
+        public long TotalExpenses { get; set; }
+        public long RentAndLeaseCost { get; set; }
+        public long Insurance { get; set; }
+        public long ProvisionsAndWriteOff { get; set; }
+        public long Salaries { get; set; }
+        public long Depreciation { get; set; }
+        public long InterestCharges { get; set; }
+        public long Motor { get; set; }
+        public long Other { get; set; }
+        public long GrossProfit { get; set; }
+        public long PreTaxProfitAndLoss { get; set; }
+        public long RetainedProiftAndLoss { get; set; }
+        public long Cashflow { get; set; }
+        public long Servicibility { get; set; }
+        public long CurrentRatio { get; set; }
+        public long AcidTestRatio { get; set; }
+        public long StockTurnoverRatio { get; set; }
+        public long DebtorsTurnoverRatio { get; set; }
+        public long CreditorsTurnoverRatio { get; set; }
+        public long DebtorsAndCreditorsRatio { get; set; }
+        public long WorkingCapitalTurnoverRatio { get; set; }
+        public long PreTaxNetProfitMargin { get; set; }
+        public long GrossProfitMargin { get; set; }
+        public long DebtGearingRatio { get; set; }
+        public long EquityGearingRatio { get; set; }
+        public long ReturnonTotalAssets { get; set; }
+        public long ReturnonCapitalEmployment { get; set; }
+        public long InterestCover { get; set; }
+        public long SalestoAssets { get; set; }
+        public long CostIncomeRatio { get; set; }
+        public long DebttoEquityRatio { get; set; }
+        public long OperatingCashflowRatio { get; set; }
     }
 
     public class CustomerAcquisitionSettings

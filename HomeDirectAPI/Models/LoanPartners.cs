@@ -11,10 +11,10 @@ namespace HomeDirectAPI.Models
     public class LoanPartners
     {
         [Key]
-        public int PartnerID { get; set; }
-        public int MortgageLoanID { get; set; }
-        public int UserID { get; set; }
-        public int CustomerID { get; set; }
+        public long PartnerID { get; set; }
+        public long MortgageLoanID { get; set; }
+        public long UserID { get; set; }
+        public long CustomerID { get; set; }
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

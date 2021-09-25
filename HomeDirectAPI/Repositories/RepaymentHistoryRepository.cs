@@ -23,7 +23,7 @@ namespace HomeDirectAPI.Repositories
             return new MySqlConnection(ConnectionString);
         }
 
-        public ListRepaymentHistoryResponse List(int LoanId)
+        public ListRepaymentHistoryResponse List(long LoanId)
         {
             ListRepaymentHistoryResponse response = new ListRepaymentHistoryResponse();
             try
@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public RepaymentHistoryResponse Read(int RepaymentID)
+        public RepaymentHistoryResponse Read(long RepaymentID)
         {
             RepaymentHistoryResponse response = new RepaymentHistoryResponse();
             try
@@ -119,7 +119,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int RepaymentID)
+        public Response Delete(long RepaymentID)
         {
             Response response = new Response();
             try

@@ -52,7 +52,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public UUSBanksResponse Read(int BankId)
+        public UUSBanksResponse Read(long BankId)
         {
             UUSBanksResponse response = new UUSBanksResponse();
             try
@@ -120,7 +120,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int BankId)
+        public Response Delete(long BankId)
         {
             Response response = new Response();
             try

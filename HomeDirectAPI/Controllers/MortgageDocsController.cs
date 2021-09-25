@@ -31,27 +31,27 @@ namespace HomeDirectAPI.Controllers
         }
 
         [HttpGet("Docs/Count")]
-        public int GetCount(int LoanID)
+        public long GetCount(long LoanID)
         {
 
             return repo.ListByMortgageLoanID(LoanID).MortgageDocs.Count;
         }
 
         [HttpGet("Mortgage/{MortgageLoanID}")]
-        public ListMortgageDocResponse ListByMortgageLoanID(int MortgageLoanID)
+        public ListMortgageDocResponse ListByMortgageLoanID(long MortgageLoanID)
         {
             return repo.ListByMortgageLoanID(MortgageLoanID);
         }
 
         [HttpGet("User/{UserID}")]
-        public ListMortgageDocResponse ListByUserID(int UserID)
+        public ListMortgageDocResponse ListByUserID(long UserID)
         {
             return repo.ListByUserID(UserID);
         }
 
         // GET api/values/5
         [HttpGet("{MortgageLoanID}")]
-        public MortgageDocResponse Get(int MortgageLoanID)
+        public MortgageDocResponse Get(long MortgageLoanID)
         {
             return repo.Read(MortgageLoanID);
         }
@@ -98,7 +98,7 @@ namespace HomeDirectAPI.Controllers
         }
 
         [HttpGet("Name")]
-        public string GetFileName(int LoanDocsID)
+        public string GetFileName(long LoanDocsID)
         {
             string fileName = string.Empty;
             MortgageDocResponse docs = repo.GetDocsPath(LoanDocsID);
@@ -117,7 +117,7 @@ namespace HomeDirectAPI.Controllers
         }
 
         [HttpPost("Download/LoanDocs")]
-        public IActionResult DownloadFile(int LoanDocsID)
+        public IActionResult DownloadFile(long LoanDocsID)
         {
             //MortgageDocResponse docsresp = new MortgageDocResponse();
             var currentDirectory = System.IO.Directory.GetCurrentDirectory();
@@ -147,7 +147,7 @@ namespace HomeDirectAPI.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{MortgageLoanID}")]
-        public Response Delete(int MortgageLoanID)
+        public Response Delete(long MortgageLoanID)
         {
             return repo.Delete(MortgageLoanID);
         }

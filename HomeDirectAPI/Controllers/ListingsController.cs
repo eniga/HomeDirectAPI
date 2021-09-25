@@ -28,9 +28,16 @@ namespace HomeDirectAPI.Controllers
             return repo.List();
         }
 
+        // GET: api/values
+        [HttpGet("Developer/{developerId}")]
+        public ListListingsResponse ListByDeveloperId(string developerId)
+        {
+            return repo.ListByDeveloperId(developerId);
+        }
+
         // GET api/values/5
         [HttpGet("{id}")]
-        public ListingsResponse GetListing(int id)
+        public ListingsResponse GetListing(long id)
         {
             return repo.Read(id);
         }
@@ -50,14 +57,14 @@ namespace HomeDirectAPI.Controllers
         }
 
         [HttpPut("UpdateStatus/{id}")]
-        public Response UpdateListingStatus(int id, [FromBody]Listings value)
+        public Response UpdateListingStatus(long id, [FromBody]Listings value)
         {
             return repo.UpdateStatus(id, value);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public Response DeleteListing(int id)
+        public Response DeleteListing(long id)
         {
             return repo.Delete(id);
         }

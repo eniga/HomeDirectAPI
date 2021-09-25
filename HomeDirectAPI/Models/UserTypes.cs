@@ -11,7 +11,7 @@ namespace HomeDirectAPI.Models
     public class UserTypes
     {
         [Key]
-        public int TypeID { get; set; }
+        public long TypeID { get; set; }
         public string TypeName { get; set; }
         public string TypeDescription { get; set; }
     }

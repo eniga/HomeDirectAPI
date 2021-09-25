@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public StateResponse GetstatebyID(int stateID)
+        public StateResponse GetstatebyID(long stateID)
         {
             StateResponse response = new StateResponse();
             try
@@ -78,7 +78,7 @@ namespace HomeDirectAPI.Repositories
             }
             return response;
         }
-        public LGAResponse LgaByStateID(int stateID)
+        public LGAResponse LgaByStateID(long stateID)
         {
             LGAResponse response = new LGAResponse();
             try
@@ -107,7 +107,7 @@ namespace HomeDirectAPI.Repositories
         }
 
 
-        public LGAsResponse GetLgaID(int LgID)
+        public LGAsResponse GetLgaID(long LgID)
         {
             LGAsResponse response = new LGAsResponse();
             try

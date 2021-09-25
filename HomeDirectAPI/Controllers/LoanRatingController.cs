@@ -30,7 +30,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET api/values/5
         [HttpGet("{RatingID}")]
-        public LoanRatingResponse Get(int RatingID)
+        public LoanRatingResponse Get(long RatingID)
         {
             return repo.Read(RatingID);
         }
@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{RatingID}")]
-        public Response Delete(int RatingID)
+        public Response Delete(long RatingID)
         {
             return repo.Delete(RatingID);
         }

@@ -44,7 +44,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ThreadResponse Get(int id)
+        public ThreadResponse Get(long id)
         {
             return repo.Read(id);
         }
@@ -65,7 +65,7 @@ namespace HomeDirectAPI.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public Response Delete(int id)
+        public Response Delete(long id)
         {
             return repo.Delete(id);
         }

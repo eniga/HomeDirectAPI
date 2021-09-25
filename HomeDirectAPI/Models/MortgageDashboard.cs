@@ -8,8 +8,8 @@ namespace HomeDirectAPI.Models
     public class MortgageDashboard
     {
         [Key]
-        public int Id { get; set; }
-        public int Year { get; set; }
+        public long Id { get; set; }
+        public long Year { get; set; }
         public string DataType { get; set; }
         public decimal January { get; set; }
         public decimal February { get; set; }

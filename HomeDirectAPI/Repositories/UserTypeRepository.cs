@@ -54,7 +54,7 @@ namespace HomeDirectAPI.Repositories
                 return response;
             }
 
-            public UserTypeResponse Read(int CatID)
+            public UserTypeResponse Read(long CatID)
             {
             UserTypeResponse response = new UserTypeResponse();
                 try
@@ -129,7 +129,7 @@ namespace HomeDirectAPI.Repositories
                 return response;
             }
 
-            public Response Delete(int CatID)
+            public Response Delete(long CatID)
             {
                 Response response = new Response();
                 try

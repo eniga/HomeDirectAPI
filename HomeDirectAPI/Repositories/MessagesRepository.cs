@@ -79,7 +79,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListMessagesResponse MyInbox(int UserId)
+        public ListMessagesResponse MyInbox(long UserId)
         {
             ListMessagesResponse response = new ListMessagesResponse();
             try
@@ -107,7 +107,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListMessagesResponse MyOutbox(int UserId)
+        public ListMessagesResponse MyOutbox(long UserId)
         {
             ListMessagesResponse response = new ListMessagesResponse();
             try
@@ -135,7 +135,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public MessagesResponse Read(int MessageID)
+        public MessagesResponse Read(long MessageID)
         {
             MessagesResponse response = new MessagesResponse();
             try
@@ -203,7 +203,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int MessageID)
+        public Response Delete(long MessageID)
         {
             Response response = new Response();
             try

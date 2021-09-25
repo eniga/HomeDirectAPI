@@ -8,29 +8,31 @@ namespace HomeDirectAPI.Models
     public class Loans
     {
         [Key]
-        public int LoanID { get; set; }
+        public long LoanID { get; set; }
         public long PropertyID { get; set; }
-        public int UserID { get; set; }
+        public long UserID { get; set; }
         public string TitleHolder { get; set; }
         public decimal LoanAmount { get; set; }
-        public int PaymentStatuteID { get; set; }
+        public long PaymentStatuteID { get; set; }
         public string PaymentStatute { get; set; }
-        public int MortgageBankID { get; set; }
+        public long MortgageBankID { get; set; }
         public string MortgageBank { get; set; }
-        public int Repayments { get; set; }
-        public int Timeline { get; set; }
+        public long Repayments { get; set; }
+        public long Timeline { get; set; }
         public decimal PerformanceRating { get; set; }
         public decimal Score { get; set; }
         [ReadOnly(true)]
         public DateTime DateCreated { get; set; }
-        public DateTime DateApproved { get; set; }
+        public DateTime? DateApproved { get; set; }
         public DateTime LoanDate { get; set; }
-        public int LoanStatusID { get; set; }
+        public long LoanStatusID { get; set; }
         public string LoanStatus { get; set; }
-        public int LoanBuyerStatusID { get; set; }
+        public long LoanBuyerStatusID { get; set; }
         public string LoanBuyerStatus { get; set; }
         public string ApplicationID { get; set; }
         public string MortgageType { get; set; }
+        public long LoanBuyerID { get; set; }
+        public string TransferComments { get; set; }
     }
 
     public class ListLoanResponse : Response
@@ -45,15 +47,15 @@ namespace HomeDirectAPI.Models
 
     public class PendingLoanResponse : Response
     {
-        public int NumberOfPending { get; set; }
+        public long NumberOfPending { get; set; }
     }
 
     public class LoanGroupByBank
     {
-        public int BankID { get; set; }
+        public long BankID { get; set; }
         public string BankName { get; set; }
         public decimal FlaggedValue { get; set; }
-        public int Units { get; set; }
+        public long Units { get; set; }
     }
 
     public class LoanGroupByBankResponse : Response

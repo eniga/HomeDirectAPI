@@ -8,7 +8,7 @@ namespace HomeDirectAPI.Models
     public class Customers
     {
         [Key]
-        public int CustomerId { get; set; }
+        public long CustomerId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }

@@ -7,7 +7,7 @@ namespace HomeDirectAPI.Models
     public class LoanBuyerStatuses
     {
         [Key]
-        public int LoanBuyerStatusID { get; set; }
+        public long LoanBuyerStatusID { get; set; }
         public string LoanBuyerStatus { get; set; }
     }
 }

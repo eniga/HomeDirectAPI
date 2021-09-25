@@ -30,7 +30,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET api/values/5
         [HttpGet("{PermID}")]
-        public PermissionsResponse Get(int PermID)
+        public PermissionsResponse Get(long PermID)
         {
             return repo.Read(PermID);
         }
@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{PermID}")]
-        public Response Delete(int PermID)
+        public Response Delete(long PermID)
         {
             return repo.Delete(PermID);
         }

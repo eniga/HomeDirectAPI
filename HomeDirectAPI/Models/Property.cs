@@ -8,8 +8,8 @@ namespace HomeDirectAPI.Models
     public class Property
     {
         [Key]
-        public int ProID { get; set; }
-        public int SellerID { get; set; }
+        public long ProID { get; set; }
+        public long SellerID { get; set; }
         public string ProType { get; set; }
         public string ProName { get; set; }
         public string Desc { get; set; }
@@ -19,8 +19,8 @@ namespace HomeDirectAPI.Models
         public string LocationLong { get; set; }
         public string Views { get; set; }
         public string ViewerStats { get; set; }
-        public DateTime EntryDate { get; set; }
-        public DateTime ExpiryDate { get; set; }
+        public DateTime? EntryDate { get; set; }
+        public DateTime? ExpiryDate { get; set; }
         public string Status { get; set; }
     }
 

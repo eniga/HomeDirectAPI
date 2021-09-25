@@ -30,7 +30,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET api/values/5
         [HttpGet("{BankID}")]
-        public BankResponse GetBank(int BankID)
+        public BankResponse GetBank(long BankID)
         {
             return repo.Read(BankID);
         }
@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{BankID}")]
-        public Response DeleteBank(int BankID)
+        public Response DeleteBank(long BankID)
         {
             return repo.Delete(BankID);
         }

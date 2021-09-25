@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListLoanRepaymentResponse BankList(int BankId)
+        public ListLoanRepaymentResponse BankList(long BankId)
         {
             ListLoanRepaymentResponse response = new ListLoanRepaymentResponse();
             try
@@ -79,7 +79,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public LoanRepaymentResponse Read(int RepaymentId)
+        public LoanRepaymentResponse Read(long RepaymentId)
         {
             LoanRepaymentResponse response = new LoanRepaymentResponse();
             try
@@ -139,7 +139,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int RepaymentId)
+        public Response Delete(long RepaymentId)
         {
             Response response = new Response();
             try

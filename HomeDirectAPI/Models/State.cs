@@ -8,15 +8,15 @@ namespace HomeDirectAPI.Models
     public class Local
     {
         [Key]
-        public int LgaID { get; set; }
-        public int StateID { get; set; }
+        public long LgaID { get; set; }
+        public long StateID { get; set; }
         public string lgaName { get; set; }
     }
 
     public class State
     {
         public string name { get; set; }
-        public int id { get; set; }
+        public long id { get; set; }
         public List<Local> locals { get; set; }
     }
     [Table("state")]
@@ -24,7 +24,7 @@ namespace HomeDirectAPI.Models
     {
         public string StateName { get; set; }
         [Key]
-        public int StateID { get; set; }
+        public long StateID { get; set; }
         //public List<Local> locals { get; set; }
     }
     public class RootObject

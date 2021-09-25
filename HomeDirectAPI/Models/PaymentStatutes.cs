@@ -7,7 +7,7 @@ namespace HomeDirectAPI.Models
     public class PaymentStatutes
     {
         [Key]
-        public int PaymentStatuteID { get; set; }
+        public long PaymentStatuteID { get; set; }
         public string PaymentStatute { get; set; }
     }
 }

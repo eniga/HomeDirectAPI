@@ -30,7 +30,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET api/values/5
         [HttpGet("{ShareID}")]
-        public LoanMarketShareResponse Get(int ShareID)
+        public LoanMarketShareResponse Get(long ShareID)
         {
             return repo.Read(ShareID);
         }
@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{ShareID}")]
-        public Response Delete(int ShareID)
+        public Response Delete(long ShareID)
         {
             return repo.Delete(ShareID);
         }

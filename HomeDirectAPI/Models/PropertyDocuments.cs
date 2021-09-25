@@ -8,7 +8,7 @@ namespace HomeDirectAPI.Models
     public class PropertyDocuments
     {
         [Key]
-        public int DocumentID { get; set; }
+        public long DocumentID { get; set; }
         public string UserID { get; set; }
         public string PropertyID { get; set; }
         public string DocumentFile { get; set; }
@@ -16,7 +16,7 @@ namespace HomeDirectAPI.Models
         public string DocumentType { get; set; }
         public string DocumentStatus {get; set; }
         public string ApprovedBy { get; set; }
-        public DateTime ApprovedTimestamp { get; set; }
+        public DateTime? ApprovedTimestamp { get; set; }
         public string UploadDate { get; set; }
         public string UploadDate2 { get; set; }
     }

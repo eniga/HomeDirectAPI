@@ -9,14 +9,14 @@ namespace HomeDirectAPI.Models
     public class UUSBanks
     {
         [Key, Required]
-        public int BankId { get; set; }
+        public long BankId { get; set; }
         [NotMapped]
-        public int AgeBracketTop { get; set; }
-        public int AgeBracketBottom { get; set; }
+        public long AgeBracketTop { get; set; }
+        public long AgeBracketBottom { get; set; }
         public string Eligibility { get; set; }
         public string LoanToValue { get; set; }
         public decimal LoanAmount { get; set; }
-        public int Tenor { get; set; }
+        public long Tenor { get; set; }
         public decimal InterestRate { get; set; }
         public string DocumentsRequired { get; set; }
         public string LoanRepayment { get; set; }

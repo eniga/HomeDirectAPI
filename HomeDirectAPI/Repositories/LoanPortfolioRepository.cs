@@ -71,7 +71,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public LoanPortfolioResponse Get(int id)
+        public LoanPortfolioResponse Get(long id)
         {
             LoanPortfolioResponse response = new LoanPortfolioResponse();
             string sql = @"select 
@@ -98,7 +98,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListBankTranchesResponse ListBankTranches(int BankId)
+        public ListBankTranchesResponse ListBankTranches(long BankId)
         {
             ListBankTranchesResponse response = new ListBankTranchesResponse();
             string sql = @"select CONCAT(LPAD(MONTH(LoanDate),2, '0'), '/', YEAR(LoanDate)) Tranche,

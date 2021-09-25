@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public BankConfigResponse Read(int ConfigID)
+        public BankConfigResponse Read(long ConfigID)
         {
             BankConfigResponse response = new BankConfigResponse();
             try
@@ -126,7 +126,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int ConfigID)
+        public Response Delete(long ConfigID)
         {
             Response response = new Response();
             try

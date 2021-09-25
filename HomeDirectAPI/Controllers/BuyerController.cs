@@ -30,7 +30,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET api/values/5
         [HttpGet("{BuyerID}")]
-        public BuyerResponse Read(int BuyerID)
+        public BuyerResponse Read(long BuyerID)
         {
             return repo.Read(BuyerID);
         }
@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{BuyerID}")]
-        public Response Delete(int BuyerID)
+        public Response Delete(long BuyerID)
         {
             return repo.Delete(BuyerID);
         }

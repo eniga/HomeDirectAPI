@@ -12,8 +12,8 @@ namespace HomeDirectAPI.Models
     public class MorgageLoanDocs
     {
         [Key]
-        public int LoanDocsID { get; set; }
-        public int MortgageLoanID { get; set; }
+        public long LoanDocsID { get; set; }
+        public long MortgageLoanID { get; set; }
         public string DocsDesc { get; set; }
         public string DocsLink { get; set; }
         public string DocsName { get; set; }
@@ -35,7 +35,7 @@ namespace HomeDirectAPI.Models
 
     public class UpdateMortgageLoanDocs
     {
-        public int LoanDocsID { get; set; }
+        public long LoanDocsID { get; set; }
         public string Docsstatus { get; set; }
     }
 }

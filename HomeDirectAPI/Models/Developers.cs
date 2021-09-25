@@ -8,7 +8,7 @@ namespace HomeDirectAPI.Models
     public class Developers
     {
         [Key]
-        public int ID { get; set; }
+        public long ID { get; set; }
         public string DeveloperID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

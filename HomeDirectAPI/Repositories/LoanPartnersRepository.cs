@@ -61,7 +61,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public PartnersResponse Read(int MortgageLoanID)
+        public PartnersResponse Read(long MortgageLoanID)
         {
             PartnersResponse response = new PartnersResponse();
             try
@@ -89,7 +89,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListpartersResponse GetPartnerByUserID(int UserID)
+        public ListpartersResponse GetPartnerByUserID(long UserID)
         {
             ListpartersResponse response = new ListpartersResponse();
             try
@@ -187,7 +187,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int MortgageLoanID)
+        public Response Delete(long MortgageLoanID)
         {
             Response response = new Response();
             try

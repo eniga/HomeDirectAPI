@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public LoanBuyerResponse Read(int LoanBuyerID)
+        public LoanBuyerResponse Read(long LoanBuyerID)
         {
             LoanBuyerResponse response = new LoanBuyerResponse();
             try
@@ -126,7 +126,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int LoanBuyerID)
+        public Response Delete(long LoanBuyerID)
         {
             Response response = new Response();
             try

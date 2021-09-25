@@ -64,7 +64,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public LoanResponse Read(int LoanID)
+        public LoanResponse Read(long LoanID)
         {
             LoanResponse response = new LoanResponse();
             try
@@ -132,7 +132,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int LoanID)
+        public Response Delete(long LoanID)
         {
             Response response = new Response();
             try
@@ -159,7 +159,7 @@ namespace HomeDirectAPI.Repositories
             {
                 using(IDbConnection conn = GetConnection())
                 {
-                    response.NumberOfPending = conn.RecordCount<int>("where LoanStatusID = 1");
+                    response.NumberOfPending = conn.RecordCount<long>("where LoanStatusID = 1");
                     response.Status = true;
                     response.Description = "Successful";
                 }
@@ -172,14 +172,14 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public PendingLoanResponse PendingByBank(int BankID)
+        public PendingLoanResponse PendingByBank(long BankID)
         {
             PendingLoanResponse response = new PendingLoanResponse();
             try
             {
                 using (IDbConnection conn = GetConnection())
                 {
-                    response.NumberOfPending = conn.RecordCount<int>("where LoanStatusID = 1 and MortgageBankID = ?BankID", BankID);
+                    response.NumberOfPending = conn.RecordCount<long>("where LoanStatusID = 1 and MortgageBankID = ?BankID", BankID);
                     response.Status = true;
                     response.Description = "Successful";
                 }
@@ -199,7 +199,7 @@ namespace HomeDirectAPI.Repositories
             {
                 using (IDbConnection conn = GetConnection())
                 {
-                    response.NumberOfPending = conn.RecordCount<int>("where LoanStatusID = 2");
+                    response.NumberOfPending = conn.RecordCount<long>("where LoanStatusID = 2");
                     response.Status = true;
                     response.Description = "Successful";
                 }
@@ -280,7 +280,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListLoanResponse GetByBank(int bankId, DateTime? StartDate = null, DateTime? EndDate = null)
+        public ListLoanResponse GetByBank(long bankId, DateTime? StartDate = null, DateTime? EndDate = null)
         {
             ListLoanResponse response = new ListLoanResponse();
             try
@@ -316,7 +316,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Object GetCustomerAcquisitionByLoanID(int LoanID)
+        public Object GetCustomerAcquisitionByLoanID(long LoanID)
         {
             Object response = new Object();
             try
@@ -344,10 +344,10 @@ namespace HomeDirectAPI.Repositories
                 //var property = propertResponse.property;
                 Application application = new Application()
                 {
-                    Amount = (int)loan.LoanAmount,
+                    Amount = (long)loan.LoanAmount,
                     Term = loan.Timeline,
                     Purpose = "Mortgage",
-                    PropertyValue = (int)loan.LoanAmount
+                    PropertyValue = (long)loan.LoanAmount
                 };
             }
             catch (Exception ex)

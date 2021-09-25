@@ -95,13 +95,13 @@ namespace HomeDirectAPI.Repositories
 
         static Random random = new Random();
 
-        public static string GenerateRandomNumber(int count)
+        public static string GenerateRandomNumber(long count)
         {
             StringBuilder builder = new StringBuilder();
 
-            for (int i = 0; i < count; i++)
+            for (long i = 0; i < count; i++)
             {
-                int number = random.Next(10);
+                long number = random.Next(10);
                 builder.Append(number);
             }
 
@@ -174,7 +174,7 @@ namespace HomeDirectAPI.Repositories
                 chars.Insert(rand.Next(0, chars.Count),
                     randomChars[3][rand.Next(0, randomChars[3].Length)]);
 
-            for (int i = chars.Count; i < opts.RequiredLength
+            for (long i = chars.Count; i < opts.RequiredLength
                 || chars.Distinct().Count() < opts.RequiredUniqueChars; i++)
             {
                 string rcs = randomChars[rand.Next(0, randomChars.Length)];

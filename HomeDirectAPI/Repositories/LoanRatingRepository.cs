@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public LoanRatingResponse Read(int RatingID)
+        public LoanRatingResponse Read(long RatingID)
         {
             LoanRatingResponse response = new LoanRatingResponse();
             try
@@ -119,7 +119,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int RatingID)
+        public Response Delete(long RatingID)
         {
             Response response = new Response();
             try

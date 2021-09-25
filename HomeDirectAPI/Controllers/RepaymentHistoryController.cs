@@ -22,13 +22,13 @@ namespace HomeDirectAPI.Controllers
         }
 
         [HttpGet("{LoanId}")]
-        public ListRepaymentHistoryResponse List(int LoanId)
+        public ListRepaymentHistoryResponse List(long LoanId)
         {
             return repo.List(LoanId);
         }
 
         [HttpGet("{RepaymentID}")]
-        public RepaymentHistoryResponse Get(int RepaymentID)
+        public RepaymentHistoryResponse Get(long RepaymentID)
         {
             return repo.Read(RepaymentID);
         }
@@ -58,7 +58,7 @@ namespace HomeDirectAPI.Controllers
         }
 
         [HttpDelete("{RepaymentID}")]
-        public Response Delete(int RepaymentID)
+        public Response Delete(long RepaymentID)
         {
             return repo.Delete(RepaymentID);
         }

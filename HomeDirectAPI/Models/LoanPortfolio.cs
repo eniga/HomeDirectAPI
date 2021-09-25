@@ -6,7 +6,7 @@ namespace HomeDirectAPI.Models
 {
     public class LoanPortfolio
     {
-        public int BankId { get; set; }
+        public long BankId { get; set; }
         public string BankName { get; set; }
         public decimal Performing { get; set; }
         public decimal Late { get; set; }

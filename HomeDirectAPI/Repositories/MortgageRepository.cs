@@ -61,7 +61,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public MortgageLoanResponse Read(int MortgageLoanID)
+        public MortgageLoanResponse Read(long MortgageLoanID)
         {
             MortgageLoanResponse response = new MortgageLoanResponse();
             try
@@ -158,7 +158,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int MortgageLoanID)
+        public Response Delete(long MortgageLoanID)
         {
             Response response = new Response();
             try
@@ -178,7 +178,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListMortgageLoanResponse GetLoanByUserID(int UserID)
+        public ListMortgageLoanResponse GetLoanByUserID(long UserID)
         {
             ListMortgageLoanResponse response = new ListMortgageLoanResponse();
             try
@@ -227,9 +227,13 @@ namespace HomeDirectAPI.Repositories
         public Response ApproveTask(UpdateLoanStatus value)
         {
             Response response = new Response();
-            string sql = "UPDATE mortgageloanapplication SET LoanStatus = ?LoanStatus, ApprovedDate =?ApprovedDate Where MortgageLoanID = ?MortgageLoanID";
-            
-            using(IDbConnection conn = GetConnection())
+            string sql = string.Empty;
+            if(value.LoanStatus.Contains("Approved"))
+                sql = "UPDATE mortgageloanapplication SET LoanStatus = ?LoanStatus, ApprovedDate = NOW() Where MortgageLoanID = ?MortgageLoanID";
+            else
+                sql = "UPDATE mortgageloanapplication SET LoanStatus = ?LoanStatus Where MortgageLoanID = ?MortgageLoanID";
+
+            using (IDbConnection conn = GetConnection())
             {
                 if (value.LoanStatus.Contains("Approved"))
                 {
@@ -238,6 +242,8 @@ namespace HomeDirectAPI.Repositories
                     try
                     {
                         var mortgage = conn.Get<MortgageLoanApplication>(value.MortgageLoanID);
+                        if (mortgage == null)
+                            return new Response() { Status = false, Description = "MortgageLoanID does not exist" };
                         var banks = conn.Get<Bank>(mortgage.BankID);
                         var status = conn.Get<LoanStatuses>(4);
                         var paymentstatute = conn.Get<PaymentStatutes>(5);
@@ -246,7 +252,7 @@ namespace HomeDirectAPI.Repositories
                             DateApproved = mortgage.ApprovedDate.HasValue ? mortgage.ApprovedDate.Value : DateTime.Now,
                             DateCreated = DateTime.Now,
                             LoanAmount = Convert.ToDecimal(mortgage.AmountBorrowed),
-                            LoanBuyerStatus = mortgage.LoanStatus,
+                            LoanBuyerStatus = "No Action",
                             LoanBuyerStatusID = 1,
                             LoanDate = mortgage.LoanDate.Value,
                             LoanStatus = status.LoanStatus,
@@ -254,10 +260,10 @@ namespace HomeDirectAPI.Repositories
                             TitleHolder = mortgage.FullName,
                             PropertyID = long.Parse(mortgage.ProID),
                             UserID = mortgage.UserID,
-                            MortgageBankID = int.Parse(mortgage.BankID),
-                            Timeline = int.Parse(mortgage.Paymentterms),
+                            MortgageBankID = long.Parse(mortgage.BankID),
+                            Timeline = long.Parse(mortgage.Paymentterms),
                             PerformanceRating = 100M,
-                            Repayments = int.Parse(mortgage.Paymentterms),
+                            Repayments = long.Parse(mortgage.Paymentterms),
                             LoanStatusID = status.LoanStatusID,
                             PaymentStatuteID = paymentstatute.PaymentStatuteID,
                             PaymentStatute = paymentstatute.PaymentStatute,
@@ -298,9 +304,11 @@ namespace HomeDirectAPI.Repositories
                             var repayment = new RepaymentHistory()
                             {
                                 InterestRate = uus.InterestRate,
-                                Amount = monthly,
+                                //Amount = monthly,
+                                Amount = 0M,
                                 LoanID = loanID.Value,
-                                Outstanding = totalrepayment - (monthly * duration),
+                                //Outstanding = totalrepayment - (monthly * duration),
+                                Outstanding = monthly,
                                 Repayment = "Unpaid",
                                 DueDate = loan.LoanDate.AddMonths(duration).ToLongDateString(),
                                 TransactionDate = loan.LoanDate.AddMonths(duration)

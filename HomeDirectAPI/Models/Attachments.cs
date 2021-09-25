@@ -7,8 +7,8 @@ namespace HomeDirectAPI.Models
     public class Attachments
     {
         [Key]
-        public int AttachmentID { get; set; }
-        public int MessageID { get; set; }
+        public long AttachmentID { get; set; }
+        public long MessageID { get; set; }
         public string FileName { get; set; }
     }
 }

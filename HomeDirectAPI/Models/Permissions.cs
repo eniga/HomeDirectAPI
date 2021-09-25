@@ -8,8 +8,8 @@ namespace HomeDirectAPI.Models
     public class Permissions
     {
         [Key]
-        public int PermID { get; set; }
-        public int PermRoleID { get; set; }
+        public long PermID { get; set; }
+        public long PermRoleID { get; set; }
         public string PermName { get; set; }
         public string PermModule { get; set; }
     }

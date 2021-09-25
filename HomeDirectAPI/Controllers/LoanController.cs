@@ -48,13 +48,13 @@ namespace HomeDirectAPI.Controllers
         }
 
         [HttpGet("pending/count")]
-        public int GetPendingCount()
+        public long GetPendingCount()
         {
             return repo.List(null, null).loans.Count;
         }
 
         [HttpGet("pending/bank/{bankId}")]
-        public ListLoanResponse GetPending(int bankId, [FromQuery] DateTime? StartDate = null, [FromQuery] DateTime? EndDate = null)
+        public ListLoanResponse GetPending(long bankId, [FromQuery] DateTime? StartDate = null, [FromQuery] DateTime? EndDate = null)
         {
             return repo.List(StartDate, EndDate);
         }
@@ -66,20 +66,20 @@ namespace HomeDirectAPI.Controllers
         }
 
         [HttpGet("transmitted/bank/{bankId}")]
-        public ListLoanResponse GetTransmitted(int bankId, [FromQuery] DateTime? StartDate = null, [FromQuery] DateTime? EndDate = null)
+        public ListLoanResponse GetTransmitted(long bankId, [FromQuery] DateTime? StartDate = null, [FromQuery] DateTime? EndDate = null)
         {
             return repo.List(StartDate, EndDate);
         }
 
         [HttpGet("transmitted/count")]
-        public int GetTransmittedCount()
+        public long GetTransmittedCount()
         {
             return repo.List(null, null).loans.Count;
         }
 
         // GET api/values/5
         [HttpGet("{loanID}")]
-        public LoanResponse Get(int loanID)
+        public LoanResponse Get(long loanID)
         {
             return repo.Read(loanID);
         }
@@ -100,13 +100,13 @@ namespace HomeDirectAPI.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{LoanID}")]
-        public Response Delete(int LoanID)
+        public Response Delete(long LoanID)
         {
             return repo.Delete(LoanID);
         }
 
         [HttpGet("bank/{bankId}")]
-        public ListLoanResponse GetByBank(int bankId, [FromQuery] DateTime? StartDate = null, [FromQuery] DateTime? EndDate = null)
+        public ListLoanResponse GetByBank(long bankId, [FromQuery] DateTime? StartDate = null, [FromQuery] DateTime? EndDate = null)
         {
             return repo.GetByBank(bankId, StartDate, EndDate);
         }
@@ -115,7 +115,7 @@ namespace HomeDirectAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomerAcquisitionResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CustomerAcquisitionFailedResponse))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(Response))]
-        public ActionResult GetLoanReport(int LoanID)
+        public ActionResult GetLoanReport(long LoanID)
         {
             var result = repo.GetCustomerAcquisitionByLoanID(LoanID);
             if (result.GetType() == typeof(Response))

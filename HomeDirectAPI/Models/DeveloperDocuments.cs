@@ -8,7 +8,7 @@ namespace HomeDirectAPI.Models
     public class DeveloperDocuments
     {
         [Key]
-        public int DocumentID { get; set; }
+        public long DocumentID { get; set; }
         public string UserID { get; set; }
         public string DocumentFile { get; set; }
         public string DocumentTitle { get; set; }

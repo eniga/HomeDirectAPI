@@ -52,7 +52,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ViewedResponse Read(int ID)
+        public ViewedResponse Read(long ID)
         {
             ViewedResponse response = new ViewedResponse();
             try
@@ -120,7 +120,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int ID)
+        public Response Delete(long ID)
         {
             Response response = new Response();
             try

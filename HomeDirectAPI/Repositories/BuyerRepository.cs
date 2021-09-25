@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public BuyerResponse Read(int BuyerID)
+        public BuyerResponse Read(long BuyerID)
         {
             BuyerResponse response = new BuyerResponse();
             try
@@ -126,7 +126,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int BuyerID)
+        public Response Delete(long BuyerID)
         {
             Response response = new Response();
             try

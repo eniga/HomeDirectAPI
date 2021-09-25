@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public BankBranchesResponse Read(int BranchID)
+        public BankBranchesResponse Read(long BranchID)
         {
             BankBranchesResponse response = new BankBranchesResponse();
             try
@@ -126,7 +126,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int BranchID)
+        public Response Delete(long BranchID)
         {
             Response response = new Response();
             try

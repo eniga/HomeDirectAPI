@@ -8,11 +8,11 @@ namespace HomeDirectAPI.Models
     public class BankBranch
     {
         [Key]
-        public int BranchID { get; set; }
-        public int BankID { get; set; }
+        public long BranchID { get; set; }
+        public long BankID { get; set; }
         public string BranchName { get; set; }
-        public int BranchManagerUserID { get; set; }
-        public int BranchManagerRoleID { get; set; }
+        public long BranchManagerUserID { get; set; }
+        public long BranchManagerRoleID { get; set; }
         public string Location { get; set; }
         public string LocationLat { get; set; }
         public string LocationLong { get; set; }

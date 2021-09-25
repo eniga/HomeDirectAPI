@@ -8,7 +8,7 @@ namespace HomeDirectAPI.Models
     public class UserCategory
     {
         [Key]
-        public int CatID { get; set; }
+        public long CatID { get; set; }
         public string CatName { get; set; }
         public string CatDescription { get; set; }
     }

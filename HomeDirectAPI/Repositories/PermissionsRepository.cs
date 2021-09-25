@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public PermissionsResponse Read(int PermID)
+        public PermissionsResponse Read(long PermID)
         {
             PermissionsResponse response = new PermissionsResponse();
             try
@@ -119,7 +119,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int PermID)
+        public Response Delete(long PermID)
         {
             Response response = new Response();
             try

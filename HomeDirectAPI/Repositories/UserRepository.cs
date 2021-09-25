@@ -79,7 +79,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public UserResponse Read(int UserID)
+        public UserResponse Read(long UserID)
         {
             UserResponse response = new UserResponse();
             try
@@ -214,7 +214,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int UserID)
+        public Response Delete(long UserID)
         {
             Response response = new Response();
             try

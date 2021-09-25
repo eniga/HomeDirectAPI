@@ -8,8 +8,8 @@ namespace HomeDirectAPI.Models
     public class BankConfig
     {
         [Key]
-        public int ConfigID { get; set; }
-        public int BankID { get; set; }
+        public long ConfigID { get; set; }
+        public long BankID { get; set; }
         public string ConfigName { get; set; }
         public string ConfigDesc { get; set; }
         public string Item { get; set; }

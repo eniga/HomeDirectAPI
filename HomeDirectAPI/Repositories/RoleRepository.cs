@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public RoleResponse Read(int RoleID)
+        public RoleResponse Read(long RoleID)
         {
             RoleResponse response = new RoleResponse();
             try
@@ -119,7 +119,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int RoleID)
+        public Response Delete(long RoleID)
         {
             Response response = new Response();
             try

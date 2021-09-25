@@ -110,7 +110,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ThreadResponse Read(int ID)
+        public ThreadResponse Read(long ID)
         {
             ThreadResponse response = new ThreadResponse();
             try
@@ -178,7 +178,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int ID)
+        public Response Delete(long ID)
         {
             Response response = new Response();
             try

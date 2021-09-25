@@ -8,7 +8,7 @@ namespace HomeDirectAPI.Models
     public class Messages
     {
         [Key]
-        public int ID { get; set; }
+        public long ID { get; set; }
         public string ThreadID { get; set; }
         public string SenderID { get; set; }
         public string RecipientID { get; set; }
@@ -16,8 +16,8 @@ namespace HomeDirectAPI.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Message { get; set; }
-        public DateTime MsgDate { get; set; }
-        public DateTime MsgDate2 { get; set; }
+        public DateTime? MsgDate { get; set; }
+        public DateTime? MsgDate2 { get; set; }
     }
 
     public class ListMessagesResponse : Response

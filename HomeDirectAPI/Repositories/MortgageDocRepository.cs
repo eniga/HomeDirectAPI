@@ -53,7 +53,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListMortgageDocResponse ListByMortgageLoanID(int MortgageLoanID)
+        public ListMortgageDocResponse ListByMortgageLoanID(long MortgageLoanID)
         {
             ListMortgageDocResponse response = new ListMortgageDocResponse();
             try
@@ -81,7 +81,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public ListMortgageDocResponse ListByUserID(int UserID)
+        public ListMortgageDocResponse ListByUserID(long UserID)
         {
             ListMortgageDocResponse response = new ListMortgageDocResponse();
             string sql = @"SELECT A.* FROM MortgageLoanDocs A
@@ -115,7 +115,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public MortgageDocResponse Read(int MortgageId)
+        public MortgageDocResponse Read(long MortgageId)
         {
             MortgageDocResponse response = new MortgageDocResponse();
             try
@@ -183,7 +183,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int MortgageId)
+        public Response Delete(long MortgageId)
         {
             Response response = new Response();
             try
@@ -203,7 +203,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public MortgageDocResponse GetDocsPath(int LoanDocsID)
+        public MortgageDocResponse GetDocsPath(long LoanDocsID)
         {
             MortgageDocResponse response = new MortgageDocResponse();
             try

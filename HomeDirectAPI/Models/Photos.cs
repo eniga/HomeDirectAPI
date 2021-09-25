@@ -7,7 +7,7 @@ namespace HomeDirectAPI.Models
     public class Photos
     {
         [Key]
-        public int id { get; set; }
+        public long id { get; set; }
         public string prop_id { get; set; }
         public string photo { get; set; }
         [ReadOnly(true)]

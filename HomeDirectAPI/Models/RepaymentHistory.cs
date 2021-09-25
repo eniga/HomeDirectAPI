@@ -8,8 +8,8 @@ namespace HomeDirectAPI.Models
     public class RepaymentHistory
     {
         [Key]
-        public int RepaymentID { get; set; }
-        public int LoanID { get; set; }
+        public long RepaymentID { get; set; }
+        public long LoanID { get; set; }
         public DateTime TransactionDate { get; set; }
         public string Repayment { get; set; }
         public decimal Amount { get; set; }

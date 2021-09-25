@@ -8,7 +8,7 @@ namespace HomeDirectAPI.Models
     public class User
     {
         [Key]
-        public int UserID { get; set; }
+        public long UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [Editable(false)]
@@ -33,11 +33,13 @@ namespace HomeDirectAPI.Models
         public string Facebook { get; set; }
         public decimal Ucode { get; set; }
         public decimal Balance { get; set; }
-        public DateTime RegDate { get; set; }
+        public DateTime? RegDate { get; set; }
         public string RegDate2 { get; set; }
         public decimal vCode { get; set; }
         public string vCodeStatus { get; set; }
         public string ZipCode { get; set; }
+        public long BankID { get; set; }
+        public long SMOID { get; set; }
     }
 
     public class ListUserResponse : Response

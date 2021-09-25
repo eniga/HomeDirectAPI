@@ -12,11 +12,11 @@ namespace HomeDirectAPI.Models
     public class MortgageLoanApplication
     {
         [Key]
-        public int MortgageLoanID { get; set; }
+        public long MortgageLoanID { get; set; }
         public string ApplicationID { get; set; }
-        public int UserID { get; set; }
+        public long UserID { get; set; }
         public string ProID { get; set; }
-        public int CustomerID { get; set; }
+        public long CustomerID { get; set; }
         public string ProName { get; set; }
         public string MortgageType { get; set; }
         public Decimal AmountBorrowed { get; set; }
@@ -75,7 +75,9 @@ namespace HomeDirectAPI.Models
 
     public class UpdateLoanStatus
     {
-        public int MortgageLoanID { get; set; }
+        [Required]
+        public long MortgageLoanID { get; set; }
+        [Required]
         public string LoanStatus { get; set; }
     }
 

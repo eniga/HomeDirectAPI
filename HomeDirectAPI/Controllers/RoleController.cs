@@ -30,7 +30,7 @@ namespace HomeDirectAPI.Controllers
 
         // GET api/values/5
         [HttpGet("{RoleID}")]
-        public RoleResponse Get(int RoleID)
+        public RoleResponse Get(long RoleID)
         {
             return repo.Read(RoleID);
         }
@@ -51,7 +51,7 @@ namespace HomeDirectAPI.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{RoleID}")]
-        public Response Delete(int RoleID)
+        public Response Delete(long RoleID)
         {
             return repo.Delete(RoleID);
         }

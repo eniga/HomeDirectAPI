@@ -60,7 +60,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public BankResponse Read(int BankID)
+        public BankResponse Read(long BankID)
         {
             BankResponse response = new BankResponse();
             try
@@ -138,7 +138,7 @@ namespace HomeDirectAPI.Repositories
             return response;
         }
 
-        public Response Delete(int BankID)
+        public Response Delete(long BankID)
         {
             Response response = new Response();
             try

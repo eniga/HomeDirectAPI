@@ -29,7 +29,7 @@ namespace HomeDirectAPI.Controllers
         }
 
         [HttpGet("UserID")]
-        public ListpartersResponse GetPartnersByUserID(int userID)
+        public ListpartersResponse GetPartnersByUserID(long userID)
         {
 
             return repo.GetPartnerByUserID(userID);
@@ -55,7 +55,7 @@ namespace HomeDirectAPI.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{MortgageLoanID}")]
-        public Response Delete(int MortgageLoanID)
+        public Response Delete(long MortgageLoanID)
         {
             return repo.Delete(MortgageLoanID);
         }

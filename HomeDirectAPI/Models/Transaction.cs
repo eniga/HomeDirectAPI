@@ -8,10 +8,10 @@ namespace HomeDirectAPI.Models
     public class Transaction
     {
         [Key]
-        public int TxnID { get; set; }
+        public long TxnID { get; set; }
         public DateTime TxnDate { get; set; }
-        public int BuyerID { get; set; }
-        public int UserID { get; set; }
+        public long BuyerID { get; set; }
+        public long UserID { get; set; }
         public string RepaytxID { get; set; }
         public decimal Amount { get; set; }
         public string RepaymentID { get; set; }

@@ -30,13 +30,13 @@ namespace HomeDirectAPI.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public LoanPortfolioResponse Get(int id)
+        public LoanPortfolioResponse Get(long id)
         {
             return repo.Get(id);
         }
 
         [HttpGet("tranches/{BankId}")]
-        public ListBankTranchesResponse ListBankTranches(int BankId)
+        public ListBankTranchesResponse ListBankTranches(long BankId)
         {
             return repo.ListBankTranches(BankId);
         }
